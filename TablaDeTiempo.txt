@@ -1,2 +1,5 @@
 Crear logos: 10 minutos
 Mock-up inicio: 45 minutos
+Mock-up contacto: 10 minutos
+Mock-up servicios: 15 minutos
+Mock-up galeria: 20 minutos
