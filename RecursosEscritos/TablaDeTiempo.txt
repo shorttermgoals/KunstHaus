@@ -4,4 +4,5 @@ Mock-up contacto: 10 minutos
 Mock-up servicios: 15 minutos
 Mock-up galeria: 20 minutos
 CRUD: 360 minutos
-Registro: 20 minutos + 30 minutos + 20 minutos
+Registro: 70 minutos
+Mejoras de accesibilidad de login y registro: 120 minutos
