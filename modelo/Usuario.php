@@ -20,23 +20,24 @@ class Usuario{
      * @param $pass
      * @param $permiso
      */
-    public function __construct($id="",$nombre="", $username="", $mail="", $permiso="",$pass=""){
+    public function __construct($id="",$nombre="", $mail="", $username="", $pass="", $permiso=""){
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->username = $username;
         $this->mail = $mail;
+        $this->username = $username;
         $this->pass = $pass;
         $this->permiso = $permiso;
         $this->tabla = "usuarios";
     }
 
-    public function llenar($id, $nombre, $username, $mail, $permiso, $pass)
+    public function llenar($id, $nombre, $mail, $username, $pass, $permiso)
     {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->username = $username;
         $this->mail = $mail;
+        $this->username = $username;
         $this->pass = $pass;
+        $this->permiso = $permiso;
     }
 
 
@@ -136,6 +137,18 @@ class Usuario{
         $this->permiso = $permiso;
     }
 
+    public function insertar($dato){
+
+        $conexion = new ConexionBBDD();
+        $conexion->insertarElementoSinFotos($this->tabla,$datos);
+    }
+
+    public function update($id, $datos){
+
+            $conexion = new ConexionBBDD();
+            $conexion->updateBDsinFoto($id, $this->tabla, $datos);
+    }
+
 
 
     public function login($mailOrUsername, $pass){
@@ -162,7 +175,18 @@ class Usuario{
        return $respuesta;
     }
 
-    public function insertar($nombre, $username, $mail, $pass){
+    public function insertarRegistro($nombre, $username, $mail, $pass){
+
+        $contraseniaComprobar = "";
+
+        if(!$this->comprobarContrasenia($pass)) {
+            // echo '<script>alert("La contraseña debe tener mínimo 8 caracteres, utilizando al menos una mayúscula y un número");</script>';
+
+            $contraseniaComprobar = "La contraseña debe tener mínimo 8 caracteres, utilizando al menos una mayúscula y un número";
+
+            return false;
+
+        }
 
         if ($this->comprobarMail($mail)) {
             echo '<script>alert("El mail introducido ya está en uso");</script>';
@@ -176,6 +200,8 @@ class Usuario{
             return false;
         }
 
+
+
         $conexion = new ConexionBBDD();
         $sql = "INSERT INTO " .$this->tabla. " (nombre, username, mail, pass, permiso) VALUES ('".$nombre."', '".$username."', '".$mail."', '".md5($pass)."', 0)";
         $res = $conexion->consulta($sql);
@@ -187,6 +213,12 @@ class Usuario{
         }
 
         return true;
+    }
+
+    public function eliminarUsuario($id){
+        $conexion = new ConexionBBDD();
+        $sql = "DELETE FROM" .$this->tabla. " WHERE  id = '".$id."'";
+        $res = $conexion->consulta($sql);
     }
 
     public function comprobarMail($mail){
@@ -207,6 +239,17 @@ class Usuario{
         return $total > 0;
     }
 
+    public function comprobarContrasenia($pass){
+        $passSecurity = "/(?=.*[A-Z])(?=.*\d).{8,}/";
+
+        if(!preg_match($passSecurity, $pass)) {
+            return false;
+        } else{
+            return true;
+        }
+
+    }
+
 
     /**
      * Version larga
@@ -214,20 +257,68 @@ class Usuario{
      */
     public function obtenerPorId($id){
 
-        $sql = "SELECT id, nombre, mail, pass, permiso FROM ".$this->tabla." WHERE id=".$id;
+        $sql = "SELECT id, nombre, mail, username, pass, permiso FROM ".$this->tabla." WHERE id=".$id;
 
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
-        list($id, $nombre, $mail, $permiso, $pass) = mysqli_fetch_array($res);
+        list($id, $nombre, $mail, $username, $pass, $permiso) = mysqli_fetch_array($res);
         /*
         $this->id = $id;
         $this->unidades = $unidades;
         ...
         */
-        $this->llenar($id, $nombre, $mail, $permiso, $pass);
+        $this->llenar($id, $nombre, $mail, $username, $pass, $permiso);
 
 
     }
+
+    /**
+     * Método que retorna una fila para la insercion en una tabla de la clase lista.
+     * @return string
+     */
+    public function imprimeteEnTr(){
+
+        $html = "<tr><td>".$this->id."</td>
+                    <td>".$this->nombre."</td>
+                    <td>".$this->username."</td>
+                    <td>".$this->mail."</td>
+                    <td>".$this->permiso."</td>
+                    <td><a href='verObjeto.php?id=".$this->id."'>Ver</a> </td>";
+
+                 if($_SESSION['permiso']>1) {
+
+                    $html.= "<td ><a href = 'ed_usuarios.php?id=".$this->id."' > Editar</a > </td >
+                    <td ><a href = 'javascript:eliminarUsuario(".$this->id.")' > Borrar</a > </td >";
+                 }
+
+                   $html .= "</tr>";
+
+        return $html;
+
+}
+
+
+public function imprimirEnFicha() {
+
+    $html = "<table border='1'>";
+
+        $html .= "<tr><th>ID</th>
+                    <th>Nombre</th>
+                    <th>Username</th>
+                    <th>Mail</th>
+                    <th>Permiso</th>
+                   </tr>";
+        $html .="  <tr><td>".$this->id."</td>
+                    <td>".$this->nombre."</td>
+                    <td>".$this->username."</td>
+                    <td>".$this->mail."</td>
+                    <td>".$this->permiso."</td>
+                    </tr></table>";
+
+    return $html;
+
+}
+
 }
 
     
