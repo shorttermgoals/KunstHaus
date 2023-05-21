@@ -4,8 +4,10 @@ class ObjetoKunst{
 
     private $id;
     private $nombre;
-    private $pintada;
+    private $color;
+    private $material;
     private $categoria;
+    private $coleccion;
     private $descripcion;
     private $fcreacion;
     private $foto;
@@ -16,7 +18,9 @@ class ObjetoKunst{
      * Figura constructor.
      * @param $id
      * @param $nombre
-     * @param $pintada
+     * @param $color
+     * @param $material
+     * @param $categoria
      * @param $coleccion
      * @param $descripcion
      * @param $fcreacion
@@ -25,11 +29,13 @@ class ObjetoKunst{
      * @param $carpetaFotos
      */
 
-    public function __construct($id="", $nombre="", $pintada="", $coleccion="", $descripcion="", $fcreacion="", $foto="", $tabla="", $carpetaFotos=""){
+    public function __construct($id="", $nombre="", $color="", $material="", $categoria="", $coleccion="", $descripcion="", $fcreacion="", $foto="", $tabla="", $carpetaFotos=""){
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->pintada = $pintada;
-        $this->categoria = $coleccion;
+        $this->color = $color;
+        $this->material = $material;
+        $this->categoria = $categoria;
+        $this->coleccion = $coleccion;
         $this->descripcion = $descripcion;
         $this->fcreacion = $fcreacion;
         $this->foto = $foto;
@@ -37,12 +43,14 @@ class ObjetoKunst{
         $this->carpetaFotos = "fotos/";
     }
 
-    public function llenar($id, $nombre, $pintada, $coleccion, $descripcion, $fcreacion, $foto)
+    public function llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto)
     {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->pintada = $pintada;
-        $this->categoria = $coleccion;
+        $this->color = $color;
+        $this->material = $material;
+        $this->categoria = $categoria;
+        $this->coleccion = $coleccion;
         $this->descripcion = $descripcion;
         $this->fcreacion = $fcreacion;
         $this->foto = $foto;
@@ -83,17 +91,33 @@ class ObjetoKunst{
     /**
      * @return string
      */
-    public function getPintada()
+    public function getColor()
     {
-        return $this->pintada;
+        return $this->color;
     }
 
     /**
-     * @param string $pintada
+     * @param string $color
      */
-    public function setPintada($pintada)
+    public function setColor($color)
     {
-        $this->pintada = $pintada;
+        $this->color = $color;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
+    /**
+     * @param string $material
+     */
+    public function setMaterial($material)
+    {
+        $this->material = $material;
     }
 
     /**
@@ -110,6 +134,22 @@ class ObjetoKunst{
     public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColeccion()
+    {
+        return $this->coleccion;
+    }
+
+    /**
+     * @param string $categoria
+     */
+    public function setColeccion($coleccion)
+    {
+        $this->coleccion = $coleccion;
     }
 
     /**
@@ -162,8 +202,8 @@ class ObjetoKunst{
 
     public function insertar($datos,$foto){
 
-        if(!isset($datos['pintada'])){
-            $datos['pintada'] = 0;
+        if(!isset($datos['color'])){
+            $datos['color'] = 0;
         }
 
         $conexion = new ConexionBBDD();
@@ -185,17 +225,17 @@ class ObjetoKunst{
      */
     public function obtenerPorId($id){
 
-        $sql = "SELECT id, nombre, pintada, coleccion, descripcion, fcreacion, foto FROM ".$this->tabla." WHERE id=".$id;
+        $sql = "SELECT id, nombre, color, material, categoria, coleccion, descripcion, fcreacion, foto FROM ".$this->tabla." WHERE id=".$id;
 
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
-        list($id, $nombre, $pintada, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res);
+        list($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res);
         /*
         $this->id = $id;
         $this->unidades = $unidades;
         ...
         */
-        $this->llenar($id, $nombre, $pintada, $coleccion, $descripcion, $fcreacion, $foto);
+        $this->llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto);
 
 
     }
@@ -212,7 +252,7 @@ class ObjetoKunst{
 
     public function obtencionPorIdVersionCorta($id){
 
-        $sql = "SELECT id, nombre, pintada, coleccion, descripcion, fcreacion, foto FROM ".$this->tabla." WHERE id=".$id;
+        $sql = "SELECT id, nombre, color, material, categoria, coleccion, descripcion, fcreacion, foto FROM ".$this->tabla." WHERE id=".$id;
 
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
@@ -228,8 +268,12 @@ class ObjetoKunst{
 
             $html = "<tr><td>".$this->id."</td>
                         <td>".$this->nombre."</td>
+                        <td>".$this->color."</td>
+                        <td>".$this->material."</td>
                         <td>".$this->categoria."</td>
+                        <td>".$this->coleccion."</td>
                         <td>".$this->descripcion."</td>
+                        <td>".$this->fcreacion."</td>
                         <td><img src='".$this->carpetaFotos.$this->foto."'></td>
                         <td><a href='verObjeto.php?id=".$this->id."'>Ver</a> </td>";
 
@@ -252,17 +296,23 @@ class ObjetoKunst{
 
             $html .= "<tr><th>ID</th>
                         <th>Nombre</th>
-                        <th>Unidades</th>
-                        <th>PVP</th>
-                        <th>Foto</th>
+                        <th>Color</th>
+                        <th>Material</th>
+                        <th>Categoria</th>
+                        <th>Coleccion</th>
                         <th>Descripción</th>
+                        <th>Fecha de creación</th>
+                        <th>Foto</th>
                        </tr>";
             $html .="  <tr><td>".$this->id."</td>
                         <td>".$this->nombre."</td>
-                        <td>".$this->unidades."</td>
-                        <td>".$this->precio."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."'></td>
+                        <td>".$this->color."</td>
+                        <td>".$this->material."</td>
+                        <td>".$this->categoria."</td>
+                        <td>".$this->coleccion."</td>
                         <td>".$this->descripcion."></td>
+                        <td>".$this->fcreacion."</td>
+                        <td><img src='".$this->carpetaFotos.$this->foto."'></td>
                         </tr></table>";
 
         return $html;

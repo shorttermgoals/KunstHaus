@@ -15,7 +15,7 @@ $usuario = new Usuario();
 if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $id = intval($_GET['id']);
-    $objeto->obtenerPorId($id);
+    $usuario->obtenerPorId($id);
 
 }
 
@@ -24,8 +24,12 @@ if(isset($_POST) && !empty($_POST)){
     if(!empty($_POST['id'])){
        //Actualizar
         $id = intval($_POST['id']);
+        $usuario->update($id,$_POST);
+        header('location:listarUsuarios.php');
     }else {
         // Insertar
+        $usuario->insertar($_POST);
+        header('location:listarUsuarios.php');
     }
    // header('location:listarFiguras.php');
 
@@ -67,7 +71,7 @@ include "includes/menu.php";
             <input type="hidden" name="id" value="<?php echo $usuario->getId() ?>">
             <li><label>Nombre: </label><input type="text" name="nombre" value="<?php echo $usuario->getNombre() ?>" required > </li>
             <li><label>Username: </label><input type="text" name="username" value="<?php echo $usuario->getUsername() ?>" required > </li>
-            <li><label>Permiso: </label><input type="int" name="permiso" value="<?php echo $usuario->getPermiso() ?>" required > </li>
+            <li><label>Permiso: </label><input type="number" name="permiso" value="<?php echo $usuario->getPermiso() ?>" required > </li>
             <li><input type="submit" value="Guardar"></li>
         </ul>
 

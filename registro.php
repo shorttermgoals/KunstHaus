@@ -5,6 +5,7 @@ require "modelo/ConexionBBDD.php";
 require "modelo/funciones.php";
 
 $usuario = new Usuario();
+$contraseniaComprobar = "";
 
 if(isset($_POST) && !empty($_POST)){
 
@@ -12,9 +13,10 @@ if(isset($_POST) && !empty($_POST)){
     $username = addslashes($_POST['username']);
     $mail = addslashes($_POST['mail']); 
     $pass = addslashes($_POST['pass']); 
-    
+
+    $contraseniaComprobar = $usuario->insertarRegistro($nombre,$username,$mail,$pass);
    
-    $usuario->insertar($nombre,$username,$mail,$pass);
+    $usuario->insertarRegistro($nombre,$username,$mail,$pass);
     //header("location:inicio.php");
 
 
@@ -44,6 +46,10 @@ if(isset($_POST) && !empty($_POST)){
             <li><label>Username: </label><input type="text" name="username" value="<?php echo $usuario->getUsername()?>" required></li>
             <li><label>Email: </label><input type="email" name="mail" value="<?php echo $usuario->getMail()?>" required></li>
             <li><label>Password: </label><input type="password" name="pass" value="<?php echo $usuario->getPass()?>" required></li>
+            <li><?php 
+                echo $contraseniaComprobar;
+            ?>
+            </li>
             <li><input type="submit" value="Guardar"></li>
             
         </ul>

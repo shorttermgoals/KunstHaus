@@ -84,12 +84,29 @@ class ConexionBBDD{
 
         if(strlen($foto['name'])>0){
 
-                $this->borrarFoto($id, $tabla);
+                $this->borrarFoto($id, $tabla, $carpeta);
                 $ruta= subirFoto($foto, $directorio);
                 $sentencias[] = "foto='".$ruta."'";
             }
 
 
+
+        $campos = implode(",", $sentencias);
+        $sql = "UPDATE " . $tabla . " SET " . $campos . " WHERE id=" . $id;
+        $conexion = new ConexionBBDD();
+        //echo $sql;
+        $conexion->consulta($sql);
+    }
+
+    public function updateBDsinFoto($id, $tabla, $datos){
+        $sentencias = array();
+
+        foreach ($datos as $campo => $valor) {
+            if ($campo != "id" && $campo != "x" && $campo != "y") {
+                $sentencias[] = $campo . "='".addslashes($valor)."'";
+                //UPDATE tabla SET nombreCampo = 'valor1', nombreCampo='valor'....
+            }
+        }
 
         $campos = implode(",", $sentencias);
         $sql = "UPDATE " . $tabla . " SET " . $campos . " WHERE id=" . $id;

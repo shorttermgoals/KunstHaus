@@ -11,17 +11,19 @@
             <a class="nav-link" href="listarObjetos.php">Gestionar Objetos</a>
         </li>';
         echo '<li class="nav-item">
-            <a class="nav-link" href="ed_usuarios.php">Administrar usuarios</a>
+            <a class="nav-link" href="listarUsuarios.php">Administrar usuarios</a>
         </li>';
         }else{
-            echo '<li class="nav-item">
+        echo '<li class="nav-item">
             <a class="nav-link" href="verObjetos.php">Ver Objetos</a>
         </li>';
         }
 
         ?>
 
-        
+        <li class="nav-item">
+            <a class="nav-link" href="contacto.php">Contacto</a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" href="logout.php">Salir</a>

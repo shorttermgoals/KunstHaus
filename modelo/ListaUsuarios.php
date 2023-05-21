@@ -1,7 +1,7 @@
 <?php
 
 
-class ListaObjetos{
+class ListaUsuarios{
 
     private $lista;
     private $tabla;
@@ -10,7 +10,7 @@ class ListaObjetos{
     public function __construct(){
 
         $this->lista = array();
-        $this->tabla = "objetokunst";
+        $this->tabla = "usuarios";
     }
 
     public function obtenerElementos($txt = ""){
@@ -25,9 +25,9 @@ class ListaObjetos{
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
 
-        while( list($id, $nombre, $pintada, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res) ){
+        while( list($id, $nombre, $username, $mail, $pass, $permiso) = mysqli_fetch_array($res) ){
 
-            $fila = new ObjetoKunst($id, $nombre, $pintada, $coleccion, $descripcion, $fcreacion, $foto);
+            $fila = new Usuario($id, $nombre, $username, $mail, $permiso);
             array_push($this->lista,$fila);
             //$this->lista[] = $fila;
 
@@ -41,9 +41,9 @@ class ListaObjetos{
         $html = "<table>";
         $html .= "<tr><th>ID</th>
                         <th>Nombre</th>
-                        <th>Colección</th>
-                        <th>Descripción</th>
-                        <th>Foto</th>
+                        <th>Username</th>
+                        <th>Mail</th>
+                        <th>Permiso</th>
                         <th colspan='3'></th></tr>";
             for($i=0;$i<sizeof($this->lista);$i++){
 
