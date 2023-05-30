@@ -14,7 +14,7 @@ body
     background-color: red;
 }
 
-.loginDialog {
+.formDialog {
     position: fixed;
     top: 0;
     right: 0;
@@ -26,7 +26,7 @@ body
     background-color: rgba(0, 0, 0, 0.062);
 }
 
-.loginArea {
+.formArea {
     width: 400px;
     position: relative;
     display: grid;
@@ -38,38 +38,53 @@ body
     z-index: 99999;
 }
 
-.contenedorLogin {
+.formArea-wide {
+    width: 800px;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    padding: 25px 0px ;
+    background: transparent;
+    z-index: 99999;
+}
+
+.contenedorForm {
     width: 350px;
     height: 100%;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows:     60px
-                            auto
-                            auto
-                            auto
-                            auto
-                            auto
-                            auto;
-    grid-template-areas:    "titleL"
-                            "messageL"
-                            "datoL"
-                            "datoL"
-                            "registerL"
-                            "buttonL" 
-                            "politicas";
+    grid-row-gap: 10px;
 }
 
-.contenedorLogin{
+.contenedorForm{
     text-decoration: none;
     list-style: none;
     display: hidden;
 }
 
-.tituloLogin{
-    grid-area:titleL;
+.contenedorForm-wide {
+    width: 750px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: 20px;
 }
 
-.descLogin {
+.contenedorForm-wide{
+    text-decoration: none;
+    list-style: none;
+    display: hidden;
+}
+
+.tituloForm a{
+    font-size: 18px
+}
+
+.tituloForm-wide a{
+    font-size: 25px
+}
+
+.descForm {
     width: 100%;
     height: 40px;
     display: grid;
@@ -77,8 +92,15 @@ body
     align-content: center;
 }
 
-.mensajeErrorLogin {
-    grid-area: messageL;
+.descForm-wide {
+    width: 100%;
+    height: 80px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.mensajeErrorForm {
     display: grid;
     justify-self: center;
     align-self: center;
@@ -91,22 +113,32 @@ body
     transition: background-color 0.3s ease;
 }
 
-.mensajeErrorLogin a{
+.mensajeErrorForm a{
     display: grid;
     align-self: center;
     text-align: center;
 }
 
-.datoLogin {
-    grid-area: datoL;
+.datoForm {
     display: grid;
     justify-content: center;
     padding: 5px 0px;
     
 }
 
-.datoLogin input{
-    width: 250px;
+.datoForm input{
+    width: 240px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 10px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    
+}
+
+.datoForm select{
+    width: 260px;
     height: 50px;
     border: 1px solid rgba(0, 0, 0, 0.062);
     border-radius: 10px;
@@ -116,8 +148,71 @@ body
     
 }
 
+.datoForm-textArea {
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+
+}
+
+.datoForm-textArea input{
+    width: 250px;
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 5px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    resize: none; /* Evita que el usuario pueda redimensionar el textarea */
+  overflow-wrap: break-word; /* Envuelve el texto en palabras cuando alcanza el límite de ancho */
+}
+
+.datoForm-wide {
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+    
+}
+
+.datoForm-wide input{
+    width: 490px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 10px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    
+}
+
+.datoForm-wide select{
+    width: 510px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 5px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    
+}
+
+.datoForm-wide-textArea {
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+
+}
+
+.datoForm-wide-textArea input{
+    width: 500px;
+    height: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+}
+
 .botonPopupRegistroLogin {
-    grid-area: registerL;
     width: 100%;
     padding: 5px 0px;
     display: grid;
@@ -140,14 +235,13 @@ body
     opacity: 0.8;
 }
 
-.botonLogin {
-    grid-area: butttonL;
+.botonForm {
     display: grid;
     justify-content: center;
     padding: 10px 0px 15px 0px;
 }
 
-.botonLogin input {
+.botonForm input {
     width: 100px;
     height: 50px;
     border: 1px solid rgba(0, 0, 0, 0.062);
@@ -157,13 +251,28 @@ body
     background-color: white;
 }
 
-.aceptarPoliticas {
-    grid-area: politicas;
+.botonForm-wide {
+    display: grid;
+    justify-content: center;
+    padding: 10px 0px 15px 0px;
+}
+
+.botonForm-wide input {
+    width: 200px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 40px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    background-color: white;
+}
+
+.textoForm {
     display: grid;
     justify-content: center;
 }
 
-.contenedorPoliticas {
+.contenedorTextoForm {
     width: 250px;
     height: 50px;
     padding: 0px 5px;
@@ -326,11 +435,11 @@ body
 }
 
 .dato-input input{
-    width: 250px;
+    width: 240px;
     height: 50px;
     border: 1px solid rgba(0, 0, 0, 0.062);
     border-radius: 10px;
-    padding: 0px 5px;
+    padding: 0px 10px;
     display: grid;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
     

@@ -55,22 +55,22 @@ if(isset($_POST) && !empty($_POST)){
 </head>
 <body>
 
-    <div class="loginDialog">
-        <div class="loginArea">
-            <div class="contenedorLogin">
-                <div class="tituloLogin">
-                    <a class="descLogin" style="font-size: 18px;"><strong>LOGIN</strong></a>
+    <div class="formDialog">
+        <div class="formArea">
+            <div class="contenedorForm">
+                <div class="tituloForm">
+                    <a class="descForm" style="font-size: 18px;"><strong>LOGIN</strong></a>
                 </div>
                 <?php if (isset($errorMensajeLogin)) : ?>
-                            <div class="mensajeErrorLogin">
-                                <a class="errorMensajeLogin" style="color:white;" ><strong><?php echo $errorMensajeLogin; ?></strong></a>
+                            <div class="mensajeErrorForm">
+                                <a style="color:white;" ><strong><?php echo $errorMensajeLogin; ?></strong></a>
                             </div>
                         <?php endif; ?>
                 <form name="login" action="<?php  echo $_SERVER['PHP_SELF']?>" method="post">
-                    <div class="datoLogin">
+                    <div class="datoForm">
                         <li><input type="text" name="mail1" placeholder="E-Mail" required></li>
                     </div>
-                    <div class="datoLogin">
+                    <div class="datoForm">
                         <li><input type="password" name="pass" placeholder="Password" required></li>
                     </div>
                     <div class="botonPopupRegistroLogin">
@@ -78,11 +78,11 @@ if(isset($_POST) && !empty($_POST)){
                                     <a href="#popupRegistro" class="botonPopupRegistroLogin-container-dato-2" style="font-size: 13px;" >No tengo cuenta</a>                               
                             </div>
                     </div>
-                    <div class="botonLogin">
+                    <div class="botonForm">
                         <li><input type="submit" value="Entrar"></li>
                     </div>
-                    <div class="aceptarPoliticas">
-                        <div class="contenedorPoliticas">
+                    <div class="textoForm">
+                        <div class="contenedorTextoForm">
                             <li><a style="opacity:0.6;">Al iniciar sesión aceptas nuestros </a><a href="terminos.php" class="datosHrefPoliticas">Términos de servicio</a><a style="opacity:0.6;"> y nuestra </a><a href="politica.php" class="datosHrefPoliticas">Política de privacidad</a></li>
                         </div>
                     </div>
