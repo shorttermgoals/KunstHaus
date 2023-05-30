@@ -22,7 +22,7 @@ require "includes/protec.php";
 
     <section >
 
-        <h1 id="portada">Esta sería la portada</h1>
+        <h1 id="portada">Esta sería la portadaaaaa</h1>
 
     </section>
 
