@@ -3,7 +3,8 @@
 
         
         <li class="nav-item">
-            <a id="menu-home" class="nav-link active" href="index.php"><img src="../images/logos/LogoMini.png"></a>
+            <a id="menu-home" class="nav-link active" href="index.php"></a>
+            <img src="./images/logos/LogoMini.png" style="width: 40px;">
         </li>
 
         <?php

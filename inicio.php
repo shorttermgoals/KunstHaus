@@ -20,7 +20,7 @@ if(isset($_POST) && !empty($_POST)){
             $errorMensajeRegistro = "Hubo un error en el registro de usuario, el usuario o mail introducido ya está en uso.";
         }
         
-    }else{
+    }else if(empty($_POST['mail2'])){
         $mailOrUsername = addslashes($_POST['mail1']);
         if($usuario->login($mailOrUsername,$pass)){
             header("location:index.php");
@@ -68,10 +68,10 @@ if(isset($_POST) && !empty($_POST)){
                         <?php endif; ?>
                 <form name="login" action="<?php  echo $_SERVER['PHP_SELF']?>" method="post">
                     <div class="datoLogin">
-                        <li><input type="text" name="mail1" placeholder="E-Mail"></li>
+                        <li><input type="text" name="mail1" placeholder="E-Mail" required></li>
                     </div>
                     <div class="datoLogin">
-                        <li><input type="password" name="pass" placeholder="Password"></li>
+                        <li><input type="password" name="pass" placeholder="Password" required></li>
                     </div>
                     <div class="botonPopupRegistroLogin">
                             <div class="botonPopupRegistroLogin-container">
@@ -102,21 +102,21 @@ if(isset($_POST) && !empty($_POST)){
                         <a href="#cerrarPopup" class="cerrarPopup" id="cerrarPopup"><img src="./images/icons/icon-close.png" style="width: 15px;"></a>      
                     </div>
                     <?php if (isset($errorMensajeRegistro)) : ?>
-                        <div class="mensajeErrorRegistro">
+                        <div class="texto-warning">
                             <a class="mensajeErrorRegistro-texto" style="color:white;"><strong><?php echo $errorMensajeRegistro; ?></strong></a>
                         </div>
                     <?php endif; ?>
                     <form  id="formularioRegistro" name="usuarios" method="post" enctype="multipart/form-data">
-                        <div class="datoRegistro">                            
+                        <div class="dato-input">                            
                             <li><input type="text" name="nombre" placeholder="Name"  required></li>
                         </div>
-                        <div class="datoRegistro">
+                        <div class="dato-input">
                             <li><input type="text" name="username" placeholder="Username"  required></li>
                         </div>
-                        <div class="datoRegistro">
+                        <div class="dato-input">
                             <li><input type="email" name="mail2" placeholder="E-mail"  required></li>
                         </div>
-                        <div class="datoRegistro">
+                        <div class="dato-input">
                             <li><input id="pass" type="password" name="pass" minlength="7" placeholder="Password" required></li>
                         </div>
                         <div class="coloresRegistro">
