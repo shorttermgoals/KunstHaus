@@ -1,5 +1,4 @@
 <nav>
-    <ul class="menuKunstHaus">
 
         
         <li class="nav-item">
@@ -40,5 +39,4 @@
         <li class="nav-item">
             <a><?php  if(isset($_SESSION['id_usuario'])) echo "Bienvenido ".$_SESSION['nombre'] ?></a>
         </li>
-    </ul>
 </nav>

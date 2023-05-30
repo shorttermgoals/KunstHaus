@@ -1,5 +1,7 @@
 body
 {
+    margin: 0;
+    padding: 0;
     font-family: Helvetica, Sans-Serif;
     width: 100%;
     height: 100%;
@@ -8,7 +10,15 @@ body
     
 }
 
-.menuKunstHaus {
+html {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+nav {
     width: 100%;
     height: 80px;
     background-color: red;
@@ -163,8 +173,6 @@ body
     padding: 0px 5px;
     display: grid;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
-    resize: none; /* Evita que el usuario pueda redimensionar el textarea */
-  overflow-wrap: break-word; /* Envuelve el texto en palabras cuando alcanza el límite de ancho */
 }
 
 .datoForm-wide {
@@ -186,7 +194,7 @@ body
 }
 
 .datoForm-wide select{
-    width: 510px;
+    width: 515px;
     height: 50px;
     border: 1px solid rgba(0, 0, 0, 0.062);
     border-radius: 10px;
@@ -203,13 +211,16 @@ body
 
 }
 
-.datoForm-wide-textArea input{
-    width: 500px;
-    height: 250px;
+.datoForm-wide-textArea textarea{
+    width: 490px;
+    height: 100px;
+    max-height: 150px;
     border: 1px solid rgba(0, 0, 0, 0.062);
     border-radius: 10px;
-    padding: 0px 5px;
+    padding: 10px;
+    display: grid;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    resize: vertical;
 }
 
 .botonPopupRegistroLogin {
@@ -527,5 +538,51 @@ body
         border-radius: 0px;
         background: white;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0);        
+    }
+
+    .tituloForm-wide a{
+        font-size: 20px;
+    }
+
+    .datoForm-wide input{
+        width: 350px;
+    }
+
+    .datoForm-wide select{
+        width: 375px;
+    }
+
+    .datoForm-wide-textArea textarea{
+        width: 350px;
+    }
+  }
+
+  @media (max-width: 375px){
+    .datoForm-wide input{
+        width: 300px;
+    }
+
+    .datoForm-wide select{
+        width: 325px;
+    }
+
+    .datoForm-wide-textArea textarea{
+        width: 300px;
+        height: 120px;
+    }
+  }
+
+  @media (max-width: 320px){
+    .datoForm-wide input{
+        width: 280px;
+    }
+
+    .datoForm-wide select{
+        width: 305px;
+    }
+
+    .datoForm-wide-textArea textarea{
+        width: 280px;
+        height: 120px;
     }
   }
