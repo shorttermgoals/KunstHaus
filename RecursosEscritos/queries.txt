@@ -1,0 +1,58 @@
+CREATE DATABASE 'kunsthaus';
+
+// CONTACTO
+
+CREATE TABLE `contenido` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `mail` varchar(60) NOT NULL,
+  `inquiry` varchar(60) NOT NULL,
+  `contents` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `contenido`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `contenido`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
+// OBJETOS
+
+CREATE TABLE `objetokunst` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `color` varchar(60) NOT NULL,
+  `material` varchar(60) NOT NULL,
+  `categoria` varchar(20) NOT NULL,
+  `coleccion` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fcreacion` date NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `objetokunst`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `objetokunst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+COMMIT;
+
+// USUARIOS
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `mail` varchar(80) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `permiso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+COMMIT;
+

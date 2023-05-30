@@ -17,7 +17,7 @@ class ListaUsuarios{
 
         $sqlBusca = "";
         if(strlen($txt)>0){
-            $sqlBusca = " WHERE nombre LIKE '%".$txt."%'";
+            $sqlBusca = " WHERE nombre LIKE '%".$txt."%' OR username LIKE '%".$txt."%' OR mail LIKE '%".$txt."%'";
         }
 
         $sql = "SELECT * FROM ".$this->tabla." ".$sqlBusca.";";
@@ -27,7 +27,7 @@ class ListaUsuarios{
 
         while( list($id, $nombre, $username, $mail, $pass, $permiso) = mysqli_fetch_array($res) ){
 
-            $fila = new Usuario($id, $nombre, $username, $mail, $permiso);
+            $fila = new Usuario($id, $nombre, $username, $mail, $pass, $permiso);
             array_push($this->lista,$fila);
             //$this->lista[] = $fila;
 
@@ -41,8 +41,8 @@ class ListaUsuarios{
         $html = "<table>";
         $html .= "<tr><th>ID</th>
                         <th>Nombre</th>
-                        <th>Username</th>
                         <th>Mail</th>
+                        <th>Username</th>
                         <th>Permiso</th>
                         <th colspan='3'></th></tr>";
             for($i=0;$i<sizeof($this->lista);$i++){

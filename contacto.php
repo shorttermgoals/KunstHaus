@@ -13,11 +13,10 @@ if(isset($_POST) && !empty($_POST)){
     $mail = addslashes($_POST['mail']); 
     $inquiry = addslashes($_POST['inquiry']); 
     $contents = addslashes($_POST['contents']); 
-    $aceptaPP = addslashes($_POST['acepta_pp']); 
     
     
    
-    $contacto->insertarContacto($nombre,$mail,$inquiry,$contents,$aceptaPP);
+    $contacto->insertarContacto($nombre,$mail,$inquiry,$contents);
     //header("location:inicio.php");
 
 
@@ -42,7 +41,6 @@ if(isset($_POST) && !empty($_POST)){
 </head>
 <body>
 <?php
-include "includes/header.php";
 include "includes/menu.php";
 ?>
 <section>
@@ -65,16 +63,7 @@ include "includes/menu.php";
                     <option value="6" <?php echo ($contacto->getInquiry() === '6') ? 'selected' : ''?>>Otros (especificar)</option>
                 </select>
             </li>
-            <li><label>Contenidos: </label><input type="text" name="contents" value="<?php echo $contacto->getContents()?>" required></li>
-
-            <?php
-                $check = "";
-                if($contacto->getAceptaPP() == 1){
-                    $check = "checked";
-                }
-            ?>
-
-            <li><label><a href="politicaprivacidad.php">Acepta la política de privacidad:</a></label><input type="checkbox" name="acepta_pp" value="1" required <?php echo $check?>> </li>
+            <li><label>Contenidos: </label><input type="textarea" name="contents" value="<?php echo $contacto->getContents()?>" required></li>
             <li><input type="submit" value="Guardar"></li>
             
         </ul>

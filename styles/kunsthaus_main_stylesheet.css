@@ -1,0 +1,416 @@
+body
+{
+    font-family: Helvetica, Sans-Serif;
+    width: 100%;
+    height: 100%;
+    color: #444444;
+    font-size: 9pt;
+    
+}
+
+.menuKunstHaus {
+    width: 100%;
+    height: 80px;
+    background-color: red;
+}
+
+.loginDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
+.loginArea {
+    width: 400px;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    padding: 25px 0px ;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    z-index: 99999;
+}
+
+.contenedorLogin {
+    width: 350px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows:     60px
+                            auto
+                            auto
+                            auto
+                            auto
+                            auto
+                            auto;
+    grid-template-areas:    "titleL"
+                            "messageL"
+                            "datoL"
+                            "datoL"
+                            "registerL"
+                            "buttonL" 
+                            "politicas";
+}
+
+.contenedorLogin{
+    text-decoration: none;
+    list-style: none;
+    display: hidden;
+}
+
+.tituloLogin{
+    grid-area:titleL;
+}
+
+.descLogin {
+    width: 100%;
+    height: 40px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.mensajeErrorLogin {
+    grid-area: messageL;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    padding: 5px;
+    width: 250px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: red;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    transition: background-color 0.3s ease;
+}
+
+.mensajeErrorLogin a{
+    display: grid;
+    align-self: center;
+    text-align: center;
+}
+
+.datoLogin {
+    grid-area: datoL;
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+    
+}
+
+.datoLogin input{
+    width: 250px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 5px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    
+}
+
+.botonPopupRegistroLogin {
+    grid-area: registerL;
+    width: 100%;
+    padding: 5px 0px;
+    display: grid;
+    justify-content: center;
+}
+
+.botonPopupRegistroLogin-container{
+    display: grid;
+    width: 240px;
+    justify-content: end;
+}
+
+.botonPopupRegistroLogin-container a{
+    text-decoration: none;
+    color: black;
+    opacity: 0.6;
+}
+
+.botonPopupRegistroLogin-container a:hover{
+    opacity: 0.8;
+}
+
+.botonLogin {
+    grid-area: butttonL;
+    display: grid;
+    justify-content: center;
+    padding: 10px 0px 15px 0px;
+}
+
+.botonLogin input {
+    width: 100px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 40px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    background-color: white;
+}
+
+.aceptarPoliticas {
+    grid-area: politicas;
+    display: grid;
+    justify-content: center;
+}
+
+.contenedorPoliticas {
+    width: 250px;
+    height: 50px;
+    padding: 0px 5px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.datosHrefPoliticas {
+    color: black;
+    opacity:0.75;
+    text-decoration: none;
+}
+
+.datosHrefPoliticas:hover{
+    color: black;
+    opacity: 1;
+    text-decoration: none;
+}
+
+.popupDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.336);
+    backdrop-filter: blur(5px);
+    z-index: 0;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.popupArea {
+    width: 400px;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    padding: 25px 0px ;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+
+    z-index: 99999;
+    
+}
+
+.contenedorPopup {
+    width: 350px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows:     60px
+                            auto
+                            auto
+                            auto
+                            auto
+                            auto
+                            auto
+                            auto;
+    grid-template-areas:    "title"
+                            "message"
+                            "dato"
+                            "dato"
+                            "dato"
+                            "dato"
+                            "colors"
+                            "button";
+}
+
+.contenedorPopup{
+    text-decoration: none;
+    list-style: none;
+    display: hidden;
+}
+
+.tituloPopup {
+    grid-area:title;
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    grid-template-areas: "vacio desc cerrar";
+}
+
+.descPopup {
+    width: 100%;
+    height: 40px;
+    grid-area: desc;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.cerrarPopup {
+    width: 100%;
+    height: 40px;
+    grid-area: cerrar;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-radius: 40px;
+    transition: background-color 0.3s ease;
+
+}
+
+.cerrarPopup img{
+    text-align: center;
+}
+
+.cerrarPopup:hover {
+    
+    background-color: rgba(0, 0, 0, 0.062);
+    
+    
+}
+
+.mensajeErrorRegistro {
+    grid-area: message;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    padding: 5px;
+    width: 250px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: red;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    transition: background-color 0.3s ease;
+}
+
+.mensajeErrorRegistro a{
+    display: grid;
+    align-self: center;
+    text-align: center;
+}
+
+.datoRegistro {
+    grid-area: dato;
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+    
+}
+
+.datoRegistro input{
+    width: 250px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 0px 5px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    
+}
+
+.coloresRegistro {
+    grid-area: colors;
+    display: grid;
+    grid-template-rows:     25px
+                            auto;
+    grid-template-areas:    "texto"
+                            "colores";
+    justify-content: center;
+}
+
+.textoPasswordColores {
+    grid-area: texto;
+    height: 100%;
+    width: 250px;
+}
+
+.coloresPasswordColores {
+    grid-area: colores;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloqueColor {
+    width: 40px;
+    height: 15px;
+    background-color: rgba(0, 0, 0, 0.062);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+
+}
+
+.botonRegistro {
+    grid-area: dato;
+    display: grid;
+    justify-content: center;
+    padding: 40px 0px 20px 0px;
+}
+
+.botonRegistro input{
+    width: 100px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 40px;
+    padding: 0px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    background-color: white;
+}
+
+.botonRegistro input :hover{
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
+@media (max-width: 425px) {
+    body {
+      font-size: 14px;
+    }
+
+    .loginDialog{
+        background-color: white;
+    }
+
+    .loginArea{
+        background-color: white;width: 400px;
+        border-radius: 0px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+    }
+
+    .popupDialog {
+        background: white;
+        backdrop-filter: blur(0px);
+    }
+    .popupDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+    
+    .popupArea {
+        border-radius: 0px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);        
+    }
+  }

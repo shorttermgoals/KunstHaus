@@ -1,7 +1,7 @@
 <?php 
 require "includes/protec.php";
 //Todos los datos del usuario que ha iniciado sesión, puedo especificar el tipo de datos despues del SESSION
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
 
 <!doctype html>
@@ -17,19 +17,20 @@ var_dump($_SESSION);
 </head>
 <body>
 <?php 
-    include "includes/header.php";
     include "includes/menu.php";
 ?>
 
-    <section>
+    <section >
 
-        <h1>Esta sería la portada</h1>
+        <h1 id="portada">Esta sería la portada</h1>
 
     </section>
 
-<?php 
+    
 
-    include "includes/footer.php"
+<?php 
+    include "includes/bilingue.php";
+    include "includes/footer.php";
 
 ?>
     

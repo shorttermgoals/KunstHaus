@@ -202,9 +202,9 @@ class ObjetoKunst{
 
     public function insertar($datos,$foto){
 
-        if(!isset($datos['color'])){
-            $datos['color'] = 0;
-        }
+        // if(!isset($datos['color'])){
+        //     $datos['color'] = 0;
+        // }
 
         $conexion = new ConexionBBDD();
         $conexion->insertarElemento($this->tabla,$datos,$this->carpetaFotos,$foto);
@@ -240,13 +240,18 @@ class ObjetoKunst{
 
     }
 
-    public function borrarObjeto($id){
-
+    public function eliminarObjeto($id){
         $conexion = new ConexionBBDD();
-        $conexion->borrarFoto($id, $this->tabla,"../".$this->carpetaFotos);
-        $sql = "DELETE FROM ".$this->tabla ." WHERE id=".$id;
-        $conexion->consulta($sql);
+        $sql = "DELETE FROM " .$this->tabla. " WHERE  id = ".$id;
+        $res = $conexion->consulta($sql);
 
+        if (!$res) {
+            // Error al insertar, muestra una alerta
+            alert("NO");
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -274,13 +279,21 @@ class ObjetoKunst{
                         <td>".$this->coleccion."</td>
                         <td>".$this->descripcion."</td>
                         <td>".$this->fcreacion."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."'></td>
+                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width: 200px;'></td>
                         <td><a href='verObjeto.php?id=".$this->id."'>Ver</a> </td>";
 
                      if($_SESSION['permiso']>1) {
 
                         $html.= "<td ><a href = 'ed_objeto.php?id=".$this->id."' > Editar</a > </td >
-                        <td ><a href = 'javascript:borrarObjeto(".$this->id.")' > Borrar</a > </td >";
+                        <td ><a href = '#popupEliminar?id=".$this->id."'>Borrar</a></td>
+                        <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
+                            <div>
+                                <a>Precaución, todos los datos de este registro serán eliminados por completo, ¿Continuar?</a>
+                                <a href='#cerrar' title='Cerrar' class='cerrar'>No</a>
+                                <a href='llamadas/borrarObjeto.php?id=".$this->id."'>Si</a>
+                            </div>
+                        </div>
+                        ";
                      }
 
                        $html .= "</tr>";
@@ -312,7 +325,7 @@ class ObjetoKunst{
                         <td>".$this->coleccion."</td>
                         <td>".$this->descripcion."></td>
                         <td>".$this->fcreacion."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."'></td>
+                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width:200px'></td>
                         </tr></table>";
 
         return $html;

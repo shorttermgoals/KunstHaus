@@ -37,7 +37,6 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 </head>
 <body>
 <?php
-include "includes/header.php";
 include "includes/menu.php";
 ?>
 <section>

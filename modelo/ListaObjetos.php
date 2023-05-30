@@ -17,7 +17,7 @@ class ListaObjetos{
 
         $sqlBusca = "";
         if(strlen($txt)>0){
-            $sqlBusca = " WHERE nombre LIKE '%".$txt."%'";
+            $sqlBusca = " WHERE nombre LIKE '%".$txt."%' OR color LIKE '%".$txt."%' OR material LIKE '%".$txt."%' OR categoria LIKE '%".$txt."%' OR coleccion LIKE '%".$txt."%'";
         }
 
         $sql = "SELECT * FROM ".$this->tabla." ".$sqlBusca.";";
@@ -25,9 +25,9 @@ class ListaObjetos{
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
 
-        while( list($id, $nombre, $color, $material, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res) ){
+        while( list($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res) ){
 
-            $fila = new ObjetoKunst($id, $nombre, $color, $material, $coleccion, $descripcion, $fcreacion, $foto);
+            $fila = new ObjetoKunst($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto);
             array_push($this->lista,$fila);
             //$this->lista[] = $fila;
 

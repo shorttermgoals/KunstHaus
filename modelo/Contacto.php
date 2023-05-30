@@ -8,7 +8,6 @@ class Contacto{
     private $mail;
     private $inquiry;
     private $contents;
-    private $aceptaPP;
     private $tabla;
 
     /**
@@ -18,26 +17,23 @@ class Contacto{
      * @param $mail
      * @param $inquiry
      * @param $contents
-     * @param $aceptaPP
      */
-    public function __construct($id="",$nombre="", $mail="", $inquiry="",$contents="", $aceptaPP=""){
+    public function __construct($id="",$nombre="", $mail="", $inquiry="",$contents=""){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->mail = $mail;
         $this->inquiry = $inquiry;
         $this->contents = $contents;
-        $this->aceptaPP = $aceptaPP;
         $this->tabla = "contenido";
     }
 
-    public function llenar($id, $nombre, $mail, $inquiry, $contents, $aceptaPP)
+    public function llenar($id, $nombre, $mail, $inquiry, $contents)
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->mail = $mail;
         $this->inquiry = $inquiry;
         $this->contents = $contents;
-        $this->aceptaPP = $aceptaPP;
     }
 
 
@@ -121,26 +117,11 @@ class Contacto{
         $this->contents = $contents;
     }
 
-    /**
-     * @return string
-     */
-    public function getAceptaPP()
-    {
-        return $this->aceptaPP;
-    }
-
-    /**
-     * @param string $aceptaPP
-     */
-    public function setAceptaPP($aceptaPP)
-    {
-        $this->aceptaPP = $aceptaPP;
-    }
-
-    public function insertarContacto($nombre, $mail, $inquiry, $contents, $aceptaPP){
+    
+    public function insertarContacto($nombre, $mail, $inquiry, $contents){
 
         $conexion = new ConexionBBDD();
-        $sql = "INSERT INTO " .$this->tabla. " (nombre, mail, inquiry, contents, acepta_pp) VALUES ('".$nombre."', '".$mail."', '".$inquiry."', '".$contents."', '".$aceptaPP."')";
+        $sql = "INSERT INTO " .$this->tabla. " (nombre, mail, inquiry, contents) VALUES ('".$nombre."', '".$mail."', '".$inquiry."', '".$contents."')";
         $res = $conexion->consulta($sql);
 
         if (!$res) {

@@ -177,25 +177,13 @@ class Usuario{
 
     public function insertarRegistro($nombre, $username, $mail, $pass){
 
-        $contraseniaComprobar = "";
-
-        if(!$this->comprobarContrasenia($pass)) {
-            // echo '<script>alert("La contraseña debe tener mínimo 8 caracteres, utilizando al menos una mayúscula y un número");</script>';
-
-            $contraseniaComprobar = "La contraseña debe tener mínimo 8 caracteres, utilizando al menos una mayúscula y un número";
-
-            return false;
-
-        }
-
+    
         if ($this->comprobarMail($mail)) {
-            echo '<script>alert("El mail introducido ya está en uso");</script>';
 
             return false;
         }
 
         if ($this->comprobarUsername($username)) {
-            echo '<script>alert("El nombre de usuario introducido ya está en uso");</script>';
 
             return false;
         }
@@ -217,8 +205,16 @@ class Usuario{
 
     public function eliminarUsuario($id){
         $conexion = new ConexionBBDD();
-        $sql = "DELETE FROM" .$this->tabla. " WHERE  id = '".$id."'";
+        $sql = "DELETE FROM " .$this->tabla. " WHERE  id = ".$id;
         $res = $conexion->consulta($sql);
+
+        if (!$res) {
+            // Error al insertar, muestra una alerta
+            alert("NO");
+            return false;
+        }
+
+        return true;
     }
 
     public function comprobarMail($mail){
@@ -239,16 +235,16 @@ class Usuario{
         return $total > 0;
     }
 
-    public function comprobarContrasenia($pass){
-        $passSecurity = "/(?=.*[A-Z])(?=.*\d).{8,}/";
+    // public function comprobarContrasenia($pass){
+    //     $passSecurity = "/(?=.*[A-Z])(?=.*\d).{8,}/";
 
-        if(!preg_match($passSecurity, $pass)) {
-            return false;
-        } else{
-            return true;
-        }
+    //     if(!preg_match($passSecurity, $pass)) {
+    //         return false;
+    //     } else{
+    //         return true;
+    //     }
 
-    }
+    // }
 
 
     /**
@@ -282,14 +278,20 @@ class Usuario{
                     <td>".$this->nombre."</td>
                     <td>".$this->username."</td>
                     <td>".$this->mail."</td>
-                    <td>".$this->permiso."</td>
-                    <td><a href='verObjeto.php?id=".$this->id."'>Ver</a> </td>";
+                    <td>".$this->permiso."</td>";
 
                  if($_SESSION['permiso']>1) {
 
                     $html.= "<td ><a href = 'ed_usuarios.php?id=".$this->id."' > Editar</a > </td >
-                    <td ><a href = 'javascript:eliminarUsuario(".$this->id.")' > Borrar</a > </td >";
-                 }
+                    <td ><a href = '#popupEliminar?id=".$this->id."'>Borrar</a></td>
+                    <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
+                        <div>
+                        <a>Precaución, todos los datos de este registro serán eliminados por completo, ¿Continuar?</a>
+                        <a href='#cerrar' title='Cerrar' class='cerrar'>No</a>
+                        <a href='llamadas/borrarUsuario.php?id=".$this->id."'>Si</a>
+                        </div>
+                    </div>";
+                }
 
                    $html .= "</tr>";
 

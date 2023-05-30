@@ -3,8 +3,10 @@ Mock-up inicio: 45 minutos
 Mock-up contacto: 10 minutos
 Mock-up servicios: 15 minutos
 Mock-up galeria: 20 minutos
-CRUD: 450 minutos
-Registro: 180 minutos
+CRUD: 540 minutos
+Registro: 325 minutos
 Mejoras de accesibilidad de login y registro: 120 minutos
 Menu administrativo de los usuarios: 60 minutos
 Contacto: 95 minutos
+Añadir languaje toggle: 60 minutos
+CSS: 330 minutos

@@ -1,21 +1,38 @@
 <?php
 
-require "../modelo/ListaObjetos.php";
-require "../modelo/ObjetoKunst.php";
+// require "../modelo/ListaObjetos.php";
+// require "../modelo/ObjetoKunst.php";
+// require "../modelo/ConexionBBDD.php";
+
+
+// $id = intval($_GET['id']);
+
+// //borro el elemento de la BD y su foto
+// $objeto = new ObjetoKunst();
+// $objeto->borrarFigura($id);
+
+
+// //Pido de nuevo la lista de elementos y la envio a AJAX
+
+// $lista = new ListaObjetos();
+// $lista->obtenerElementos();
+
+
+// echo $lista->imprimirFigurasEnBack();
+
 require "../modelo/ConexionBBDD.php";
+require "../modelo/ObjetoKunst.php";
 
-
-$id = intval($_GET['id']);
-
-//borro el elemento de la BD y su foto
 $objeto = new ObjetoKunst();
-$objeto->borrarFigura($id);
 
+if(isset($_GET['id']) && !empty($_GET['id'])){
 
-//Pido de nuevo la lista de elementos y la envio a AJAX
+    $id = intval($_GET['id']);
+    // $objeto->obtenerPorId($id);
+    // echo $id;
+    if($objeto->eliminarObjeto($id)){
+        header('location: ../listarObjetos.php');
+        exit();
+    }
 
-$lista = new ListaObjetos();
-$lista->obtenerElementos();
-
-
-echo $lista->imprimirFigurasEnBack();
+}

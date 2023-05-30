@@ -30,7 +30,6 @@ $objeto->obtenerPorId($id);
 </head>
 <body>
 <?php
-include "includes/header.php";
 include "includes/menu.php";
 ?>
 <section>

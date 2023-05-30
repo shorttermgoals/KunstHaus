@@ -60,7 +60,6 @@ if(isset($_POST) && !empty($_POST)){
 </head>
 <body>
 <?php
-include "includes/header.php";
 include "includes/menu.php";
 ?>
 <section>

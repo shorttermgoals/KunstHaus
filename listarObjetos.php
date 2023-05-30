@@ -11,6 +11,7 @@ if($_SESSION['permiso']<2){
 
 
 $lista = new ListaObjetos();
+$objeto = new ObjetoKunst();
 if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 
     $lista->obtenerElementos(addslashes($_GET['buscar']));
@@ -18,6 +19,7 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 }else {
     $lista->obtenerElementos();
 }
+
 
 
 ?>
@@ -39,7 +41,6 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 </head>
 <body>
 <?php
-include "includes/header.php";
 include "includes/menu.php";
 ?>
 <section>
@@ -48,6 +49,7 @@ include "includes/menu.php";
 
     <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
         <input name="buscar" type="text" placeholder="Buscador"><input type="submit" value="Buscar">
+        <button type="submit">↻</button>
     </form>
 
 
