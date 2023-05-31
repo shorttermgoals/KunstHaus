@@ -55,11 +55,11 @@ if(isset($_POST) && !empty($_POST)){
 </head>
 <body>
 
-    <div class="formDialog">
-        <div class="formArea">
-            <div class="contenedorForm">
-                <div class="tituloForm">
-                    <a class="descForm" style="font-size: 18px;"><strong>LOGIN</strong></a>
+    <div class="formDialog-login">
+        <div class="formArea-login">
+            <div class="contenedorForm-login">
+                <div class="tituloForm-login">
+                    <a class="descForm-login" style="font-size: 18px;"><strong>LOGIN</strong></a>
                 </div>
                 <?php if (isset($errorMensajeLogin)) : ?>
                             <div class="mensajeErrorForm">
@@ -67,10 +67,10 @@ if(isset($_POST) && !empty($_POST)){
                             </div>
                         <?php endif; ?>
                 <form name="login" action="<?php  echo $_SERVER['PHP_SELF']?>" method="post">
-                    <div class="datoForm">
+                    <div class="datoForm-login">
                         <li><input type="text" name="mail1" placeholder="E-Mail" required></li>
                     </div>
-                    <div class="datoForm">
+                    <div class="datoForm-login">
                         <li><input type="password" name="pass" placeholder="Password" required></li>
                     </div>
                     <div class="botonPopupRegistroLogin">
@@ -78,10 +78,10 @@ if(isset($_POST) && !empty($_POST)){
                                     <a href="#popupRegistro" class="botonPopupRegistroLogin-container-dato-2" style="font-size: 13px;" >No tengo cuenta</a>                               
                             </div>
                     </div>
-                    <div class="botonForm">
+                    <div class="botonForm-login">
                         <li><input type="submit" value="Entrar"></li>
                     </div>
-                    <div class="textoForm">
+                    <div class="textoForm-login">
                         <div class="contenedorTextoForm">
                             <li><a style="opacity:0.6;">Al iniciar sesión aceptas nuestros </a><a href="terminos.php" class="datosHrefPoliticas">Términos de servicio</a><a style="opacity:0.6;"> y nuestra </a><a href="politica.php" class="datosHrefPoliticas">Política de privacidad</a></li>
                         </div>

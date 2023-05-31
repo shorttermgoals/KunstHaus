@@ -10,15 +10,17 @@ $contacto = new Contacto();
 if(isset($_POST) && !empty($_POST)){
 
     $nombre = addslashes($_POST['nombre']);
-    $mail = addslashes($_POST['mail']); 
+    $mail = addslashes($_POST['mail']);
     $inquiry = addslashes($_POST['inquiry']); 
     $contents = addslashes($_POST['contents']); 
-    
-    
-   
-    $contacto->insertarContacto($nombre,$mail,$inquiry,$contents);
-    //header("location:inicio.php");
 
+
+    $contacto->insertarContacto($nombre,$mail,$inquiry,$contents);
+
+
+
+    
+    //header("location:inicio.php");
 
 
 }
@@ -43,53 +45,50 @@ if(isset($_POST) && !empty($_POST)){
 <?php
 include "includes/menu.php";
 ?>
-<section>
-    <div class="mainPage">
-        <div class="formDialog">
-            <div class="formArea-wide">
-                <div class="contenedorForm-wide">
-                    <div class="tituloForm-wide">
-                        <a class="descForm-wide"><strong>CONTACTO</strong></a>
+    <section>
+            <div class="formDialog-wide">
+                <div class="formArea-wide">
+                    <div class="contenedorForm-wide">
+                        <div class="tituloForm-wide">
+                            <a class="descForm-wide"><strong>CONTACTO</strong></a>
+                        </div>
+                        <form name="contenido" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+                            <div class="datoForm-wide">
+                                <li><input type="text" name="nombre" placeholder="Nombre" value="<?php echo $contacto->getNombre()?>" required></li>
+                            </div>
+                            <div class="datoForm-wide">
+                                <li><input type="text" name="mail" placeholder="Mail" value="<?php echo $contacto->getMail()?>" required></li>
+                            </div>
+                            <div class="datoForm-wide">
+                                <li><select name="inquiry" required>
+                                        <option value="">Motivo</option>
+                                        <option value="Consigna" <?php echo ($contacto->getInquiry() === 'Consigna') ? 'selected' : ''?>>- Consigna</option>
+                                        <option value="Consulta sobre ejemplar" <?php echo ($contacto->getInquiry() === 'Consulta sobre ejemplar') ? 'selected' : ''?>>- Consulta sobre ejemplar</option>
+                                        <option value="Venta privada" <?php echo ($contacto->getInquiry() === 'Venta privada') ? 'selected' : ''?>>- Venta privada</option>
+                                        <option value="Registro de contenido" <?php echo ($contacto->getInquiry() === 'Registro de contenido') ? 'selected' : ''?>>- Registro de contenido</option>
+                                        <option value="Planning de evento" <?php echo ($contacto->getInquiry() === 'Planning de evento') ? 'selected' : ''?>>- Planning de evento</option>
+                                        <option value="Otros (especificar)" <?php echo ($contacto->getInquiry() === 'Otros (especificar)') ? 'selected' : ''?>>- Otros (especificar)</option>
+                                    </select>
+                                </li>
+                            </div>
+                            <div class="datoForm-wide-textArea">
+                                <li><textarea placeholder="Comentarios" name="contents" maxlength="254" value="<?php echo $contacto->getContents()?>" required></textarea></li>
+                            </div>
+                            <div class="botonForm-wide">
+                                <li><input id="enviarMail" type="submit" value="Guardar"></li>
+                            </div>
+                                
+                        </form>
                     </div>
-                    <form name="contenido" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-                        <div class="datoForm-wide">
-                            <li><input type="text" name="nombre" placeholder="Nombre" value="<?php echo $contacto->getNombre()?>" required></li>
-                        </div>
-                        <div class="datoForm-wide">
-                            <li><input type="email" name="mail" placeholder="Email" value="<?php echo $contacto->getMail()?>" required></li>
-                        </div>
-                        <div class="datoForm-wide">
-                            <li><select id="cont" name="inquiry" required>
-                                    <option value="">Motivo</option>
-                                    <option value="1" <?php echo ($contacto->getInquiry() === '1') ? 'selected' : ''?>>- Consigna</option>
-                                    <option value="2" <?php echo ($contacto->getInquiry() === '2') ? 'selected' : ''?>>- Consulta sobre ejemplar</option>
-                                    <option value="3" <?php echo ($contacto->getInquiry() === '3') ? 'selected' : ''?>>- Venta privada</option>
-                                    <option value="4" <?php echo ($contacto->getInquiry() === '4') ? 'selected' : ''?>>- Registro de contenido</option>
-                                    <option value="5" <?php echo ($contacto->getInquiry() === '5') ? 'selected' : ''?>>- Planning de evento</option>
-                                    <option value="6" <?php echo ($contacto->getInquiry() === '6') ? 'selected' : ''?>>- Otros (especificar)</option>
-                                </select>
-                            </li>
-                        </div>
-                        <div class="datoForm-wide-textArea">
-                            <li><textarea placeholder="Comentarios" name="contents" maxlength="254" value="<?php echo $contacto->getContents()?>" required></textarea></li>
-                        </div>
-                        <div class="botonForm-wide">
-                            <li><input type="submit" value="Guardar"></li>
-                        </div>
-                            
-                    </form>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-
-
+    </section>
+    
 <?php
-
 include "includes/footer.php";
-
 ?>
+
+
+
 </body>
 </html>

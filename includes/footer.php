@@ -1,5 +1,5 @@
 <footer>
+    <div class="contenedorNavFooter">
 
-    ESTE ES EL FOOTER TEMPORAL
-
+    </div>
 </footer>

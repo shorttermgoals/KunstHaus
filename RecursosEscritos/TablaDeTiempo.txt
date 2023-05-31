@@ -9,4 +9,4 @@ Mejoras de accesibilidad de login y registro: 120 minutos
 Menu administrativo de los usuarios: 60 minutos
 Contacto: 95 minutos
 Añadir languaje toggle: 60 minutos
-CSS: 510 minutos
+CSS: 640 minutos
