@@ -28,10 +28,10 @@
                 <div class="contenedorNavFooterMenu-elemento">
                     <li><a id="menu-salir" class="nav-link" href="logout.php">Logout</a></li>
                 </div>
-                <div class="contenedorNavFooterMenu-elemento-user">
-                    <li><a ><?php  if(isset($_SESSION['id_usuario'])) echo "<a id='menu-saludo' href='perfil.php?id=".$_SESSION['id_usuario']."' >Bienvenido <strong>".$_SESSION['username']."</strong></a>" ?></a></li>
+                <div class="contenedorNavFooterMenu-elemento">
+                    <li><?php  if(isset($_SESSION['id_usuario'])) echo "<a id='menu-saludo' href='perfil.php?id=".$_SESSION['id_usuario']."' ><strong>".$_SESSION['username']."</strong></a>" ?></li>
                 </div>
-                <div class="contenedorNavFooterMenu-elemento-user">
+                <div class="contenedorNavFooterMenu-elemento">
                     <li >
                         <a href="#popupMenu" id="menu-popup" style="display: none;" >
                             <img src="./images/icons/menu-icon.png" style="width:40px;" >
@@ -45,7 +45,7 @@
             </li> -->
         </div>
     </div>
-    <div id="popupMenu" class="popupDialog">
+    <div id="popupMenu" class="popupDialog-wide">
             <div id="popupArea" class="popupArea-wide">
                 <div class="contenedorPopup-wide">
                     <div class="tituloPopup-wide">

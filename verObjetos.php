@@ -45,6 +45,7 @@ include "includes/menu.php";
 
     <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
         <input name="buscar" type="text" placeholder="Buscador"><input type="submit" value="Buscar">
+        <button type="submit">↻</button>
     </form>
 
 

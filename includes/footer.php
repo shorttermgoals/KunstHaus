@@ -6,7 +6,7 @@
                         <li><a>© 2023 Kunsthaus.com</a></li>
                     </div>
                     <div class="contenedorNavFooterMenu-elemento-noHover">
-                        <li><a href="politicas.php">Políticas</a></li>
+                        <li><a href="privacidad.php">Privacidad</a></li>
                     </div>
                     <div class="contenedorNavFooterMenu-elemento-noHover">
                         <li><a href="terminos.php">Términos</a></li>

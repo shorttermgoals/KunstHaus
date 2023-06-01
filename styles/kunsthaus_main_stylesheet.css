@@ -91,6 +91,12 @@ label {
     display: grid;
     justify-content: center;
     align-content: center;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+.contenedorNavFooterMenu-elemento-img:hover{
+    opacity: 1;
 }
 
 .contenedorNavFooterMenu-elemento {
@@ -124,7 +130,7 @@ label {
     text-decoration: none;
     color: black;
     opacity: 0.8;
-    padding: 10px 15px;
+    padding: 15px 15px;
     border-radius: 40px;
     transition: background-color 0.3s ease;
 
@@ -147,6 +153,68 @@ label {
     opacity: 1;
 }
 
+.textPageDialog {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    padding: 0px 0px 50px 0px;
+}
+
+.textPageArea{
+    position: relative;
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    padding: 25px 0px ;
+}
+
+.contenedorTextPage{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 200px
+                        auto;
+    grid-row-gap: 20px;
+}
+
+.contenedorTextPage{
+    text-decoration: none;
+    list-style: none;
+    display: hidden;
+}
+
+.tituloTextPage{
+    height: 40px;
+}
+
+.tituloTextPage a{
+    font-size: 50px
+}
+
+.descTextPage{
+    width: 100%;
+    height: 80px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.bloqueTextPage{
+    width: 750px;
+    height: 100%;
+    display: grid;
+    grid-row-gap: 20px;
+}
+
+.tituloBloque a{
+    font-size: 35px;
+}
+
+.contenidoBloque a{
+    font-size: 20px;
+}
 
 .formDialog-login {
     position: fixed;
@@ -476,6 +544,30 @@ label {
     pointer-events: auto;
 }
 
+.popupDialog-wide {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.336);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupDialog-wide:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
 .popupArea {
     width: 400px;
     position: relative;
@@ -498,7 +590,8 @@ label {
     justify-content: center;
     align-self: start;
     padding: 25px 0px ;
-    border-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
 
@@ -733,11 +826,34 @@ label {
         justify-content: center;
         align-content: center;
     }
+    
+    .tituloTextPage a{
+        font-size: 35px
+    }
+
+
+    .tituloBloque a{
+        font-size: 25px;
+    }
+
+    .contenidoBloque a{
+        font-size: 15px;
+    }
 }
 
+@media (max-width: 768px){
+    .bloqueTextPage{
+        width: 500px;
+    }
+    
+}
 @media (max-width: 425px) {
     body {
       font-size: 14px;
+    }
+
+    section{
+        padding: 150px 0px;
     }
 
     .loginDialog{
@@ -789,6 +905,24 @@ label {
     .contenedorNavFooterMenu-elemento-noHover a{
         font-size: 10px;
     }
+
+    .tituloTextPage a{
+        font-size: 25px
+    }
+    
+    .bloqueTextPage{
+        width: 300px;
+        grid-row-gap: 10px;
+    }
+
+    .contenedorTextPage{
+        grid-template-rows: 150px
+                            auto;
+    }
+
+    .contenidoBloque a{
+        font-size: 10px;
+    }
   }
 
   @media (max-width: 375px){
@@ -831,4 +965,24 @@ label {
     .contenedorNavFooterMenu-elemento-noHover a{
         font-size: 8px;
     }
+
+    .contenedorNavFooterMenu-elemento-noHover a{
+        font-size: 10px;
+    }
+
+    
+
+    .tituloTextPage a{
+        font-size: 20px;
+    }
+    
+    .bloqueTextPage{
+        width: 250px;
+    }
+
+    .tituloBloque a{
+        font-size: 20px;
+    }
+
+    
   }
