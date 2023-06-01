@@ -33,7 +33,6 @@ require "includes/protec.php";
     include "includes/footer.php";
 
 ?>
-    
 
 </body>
 </html>

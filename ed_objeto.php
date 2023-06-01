@@ -63,8 +63,7 @@ if(isset($_POST) && !empty($_POST)){
 include "includes/menu.php";
 ?>
 <section>
-<div class="mainPage">
-    <div class="formDialog">
+    <div class="formDialog-wide">
         <div class="formArea-wide">
             <div class="contenedorForm-wide">
                 <div class="tituloForm-wide">
@@ -136,8 +135,11 @@ include "includes/menu.php";
                         <div class="datoForm-wide">
                             <li><input type="text" placeholder="Colección" name="coleccion" value="<?php echo $objeto->getColeccion() ?>" required> </li>
                         </div>
-                        <div class="datoForm-wide">
-                            <li><input type="file" placeholder="Foto" name="foto"> </li>
+                        <div class="datoForm-wide-label">
+                            <li>
+                                <input type="file" id="fileInput" name="foto" style="display:none;">
+                                <label for="fileInput" ><a>Seleccione un archivo</a></label>
+                            </li>
                         </div>
                         <div class="datoForm-wide-textArea">
                             <li><textarea placeholder="Descripción" name="descripcion" required><?php echo $objeto->getDescripcion() ?></textarea></li>
@@ -153,7 +155,6 @@ include "includes/menu.php";
 </div>
 
 
-</div>
 </section>
 <?php
 

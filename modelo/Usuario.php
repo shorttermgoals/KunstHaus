@@ -155,15 +155,15 @@ class Usuario{
 
         $conexion = new ConexionBBDD();
         $sql = "SELECT id, nombre, permiso FROM ".$this->tabla.
-               " WHERE mail='".$mailOrUsername."' OR username='".$mailOrUsername."' AND pass='".md5($pass)."';";
+               " WHERE username='".$mailOrUsername."' AND pass='".md5($pass)."';";
         $res = $conexion->consulta($sql);
         $conexion->numeroElementos();
 
         if($conexion->numeroElementos()>0){
-            list($id, $nombre, $permiso) = mysqli_fetch_array($res);
+            list($id, $username,$permiso, $nombre) = mysqli_fetch_array($res);
             session_start();
             $_SESSION['id_usuario'] = $id;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $mailOrUsername;
             $_SESSION['nombre'] = $nombre;
             $_SESSION['permiso'] = $permiso;
             $_SESSION['mail'] = $mail;

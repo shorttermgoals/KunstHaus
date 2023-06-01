@@ -61,27 +61,35 @@ if(isset($_POST) && !empty($_POST)){
 include "includes/menu.php";
 ?>
 <section>
-<div class="formulario">
-    <h1>Formulario de Usuario</h1>
-
-    <form name="usuarios" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-
-        <ul>
-            <input type="hidden" name="id" value="<?php echo $usuario->getId() ?>">
-            <li><label>Nombre: </label><input type="text" name="nombre" value="<?php echo $usuario->getNombre() ?>" required > </li>
-            <li><label>Username: </label><input type="text" name="username" value="<?php echo $usuario->getUsername() ?>" required > </li>
-            <li>
-                <label for="per">Permiso: </label>
-                <select id="per" name="permiso" required>
-                    <option hidden value=""></option>
-                    <option value="0" <?php echo ($usuario->getPermiso() === 'N/A') ? 'selected' : ''?>>N/A</option>
-                    <option value="7" <?php echo ($usuario->getPermiso() === 'Admin') ? 'selected' : ''?>>Admin</option>
-                </select>
-            </li>
-            <li><input type="submit" value="Guardar"></li>
-        </ul>
-
-    </form>
+<div class="formDialog-wide">
+    <div class="formArea-wide">
+        <div class="contenedorForm-wide">
+            <div class="tituloForm-wide">
+                <a class="descForm-wide"><strong>DATOS DE USUARIO</strong></a>
+            </div>
+            <form name="usuarios" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $usuario->getId() ?>">
+                    <div class="datoForm-wide">
+                        <li><input type="text" placeholder="nombre" name="nombre" value="<?php echo $usuario->getNombre() ?>" required > </li>
+                    </div>
+                    <div class="datoForm-wide">
+                        <li><input type="text" placeholder="username" name="username" value="<?php echo $usuario->getUsername() ?>" required > </li>
+                    </div>
+                    <div class="datoForm-wide">
+                        <li>
+                            <select id="per" name="permiso" required>
+                                <option value="">Permiso</option>
+                                <option value="0" <?php echo ($usuario->getPermiso() === 'N/A') ? 'selected' : ''?>>N/A</option>
+                                <option value="7" <?php echo ($usuario->getPermiso() === 'Admin') ? 'selected' : ''?>>Admin</option>
+                            </select>
+                        </li>
+                    </div>
+                    <div class="botonForm-wide">
+                        <li><input type="submit" value="Guardar"></li>
+                    </div>
+            </form>
+        </div>
+    </div>
 
 </div>
 </section>

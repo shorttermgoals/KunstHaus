@@ -3,7 +3,6 @@ require "modelo/ConexionBBDD.php";
 require "modelo/funciones.php";
 require "modelo/Usuario.php";
 if(isset($_POST) && !empty($_POST)){
-
     
     $pass = addslashes($_POST['pass']);
 
@@ -68,7 +67,7 @@ if(isset($_POST) && !empty($_POST)){
                         <?php endif; ?>
                 <form name="login" action="<?php  echo $_SERVER['PHP_SELF']?>" method="post">
                     <div class="datoForm-login">
-                        <li><input type="text" name="mail1" placeholder="E-Mail" required></li>
+                        <li><input type="text" name="mail1" placeholder="User" required></li>
                     </div>
                     <div class="datoForm-login">
                         <li><input type="password" name="pass" placeholder="Password" required></li>
