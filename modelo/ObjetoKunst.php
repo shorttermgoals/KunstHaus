@@ -11,6 +11,8 @@ class ObjetoKunst{
     private $descripcion;
     private $fcreacion;
     private $foto;
+    private $id_creador;
+    private $usuario_creador;
     private $tabla;
     private $carpetaFotos;
 
@@ -25,11 +27,12 @@ class ObjetoKunst{
      * @param $descripcion
      * @param $fcreacion
      * @param $foto
+     * @param $id_creador
      * @param $tabla
      * @param $carpetaFotos
      */
 
-    public function __construct($id="", $nombre="", $color="", $material="", $categoria="", $coleccion="", $descripcion="", $fcreacion="", $foto="", $tabla="", $carpetaFotos=""){
+    public function __construct($id="", $nombre="", $color="", $material="", $categoria="", $coleccion="", $descripcion="", $fcreacion="", $foto="", $id_creador="", $usuario_creador="", $tabla="", $carpetaFotos=""){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->color = $color;
@@ -39,11 +42,13 @@ class ObjetoKunst{
         $this->descripcion = $descripcion;
         $this->fcreacion = $fcreacion;
         $this->foto = $foto;
+        $this->id_creador = $id_creador;
+        $this->usuario_creador = $usuario_creador;
         $this->tabla = "objetokunst";
         $this->carpetaFotos = "fotos/";
     }
 
-    public function llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto)
+    public function llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto, $id_creador)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -54,6 +59,7 @@ class ObjetoKunst{
         $this->descripcion = $descripcion;
         $this->fcreacion = $fcreacion;
         $this->foto = $foto;
+        $this->id_creador = $id_creador;
     }
 
       /**
@@ -200,6 +206,22 @@ class ObjetoKunst{
         $this->foto = $foto;
     }
 
+     /**
+     * @return string
+     */
+    public function getIdCreador()
+    {
+        return $this->id_creador;
+    }
+
+    /**
+     * @param string $id_creador
+     */
+    public function setIdCreador($id_creador)
+    {
+        $this->id_creador = $id_creador;
+    }
+
     public function insertar($datos,$foto){
 
         // if(!isset($datos['color'])){
@@ -225,17 +247,17 @@ class ObjetoKunst{
      */
     public function obtenerPorId($id){
 
-        $sql = "SELECT id, nombre, color, material, categoria, coleccion, descripcion, fcreacion, foto FROM ".$this->tabla." WHERE id=".$id;
+        $sql = "SELECT id, nombre, color, material, categoria, coleccion, descripcion, fcreacion, foto, id_creador FROM ".$this->tabla." WHERE id=".$id;
 
         $conexion = new ConexionBBDD();
         $res = $conexion->consulta($sql);
-        list($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res);
+        list($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto, $id_creador) = mysqli_fetch_array($res);
         /*
         $this->id = $id;
         $this->unidades = $unidades;
         ...
         */
-        $this->llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto);
+        $this->llenar($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto, $id_creador);
 
 
     }
@@ -279,8 +301,7 @@ class ObjetoKunst{
                         <td>".$this->coleccion."</td>
                         <td>".$this->descripcion."</td>
                         <td>".$this->fcreacion."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width: 200px;'></td>
-                        <td><a href='verObjeto.php?id=".$this->id."'>Ver</a> </td>";
+                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width: 200px;'></td>";
 
                      if($_SESSION['permiso']>1) {
 
@@ -318,6 +339,62 @@ class ObjetoKunst{
                        $html .= "</tr>";
 
             return $html;
+
+    }
+
+    public function obtenerUsuarioCreadorDesdeBD() {
+        // Realizar consulta a la base de datos para obtener la id del creador
+        $conexion = new ConexionBBDD();
+        $sql = "SELECT usuario_creador FROM ".$this->tabla." WHERE id=".$this->id;
+        $res = $conexion->consulta($sql);
+        list($usuario_creador) = mysqli_fetch_array($res);
+        
+        return $usuario_creador;
+    }
+
+    public function imprimeGaleria() {
+
+        $usuarioCreador = $this->obtenerUsuarioCreadorDesdeBD();
+
+        $html = "<div class='postObj'>
+                    <div class='tituloPostObj'>
+                        <a><strong>".$usuarioCreador."</strong></a>
+                    </div>
+                    <div class='fotoPostObj'>
+                        <a href='#popupPublicacion?id=".$this->id."'>                        
+                            <img src='".$this->carpetaFotos.$this->foto."'>
+                        </a>
+                    </div>
+                    <div class='nombrePostObj'>
+                        <a>".$this->nombre."</a>
+                    </div>
+                </div>
+                <div id='popupPublicacion?id=".$this->id."' class='popupDialog'>
+                        <div id='popupArea' class='popupArea-publicacion'>
+                            <div class='contenedorPopup-publicacion'>
+                                <div class='imagenPopup'>
+                                    <img src='".$this->carpetaFotos.$this->foto."' style='height: 500px'>
+                                </div>
+                                <div class='descPublicacionPopup'>
+                                    <div class='cerrarPublicacionPopup'>
+                                        <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'>
+                                            <img src='./images/icons/icon-close.png' style='width: 15px;'>
+                                        </a>      
+                                    </div>
+                                    <div class='elementoContenidoPublicacionPopup'>
+                                        <a>".$this->nombre." by ".$usuarioCreador."</a>
+                                    </div>
+                                    <div class='elementoContenidoPublicacionPopup'>
+                                        <a>".$this->descripcion."</a>
+                                    </div>
+                                    <div class='elementoContenidoPublicacionPopup'>
+                                        <a>".$this->categoria."</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>";
+        return $html;
 
     }
 

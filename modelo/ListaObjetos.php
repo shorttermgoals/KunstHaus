@@ -59,6 +59,19 @@ class ListaObjetos{
 
     }
 
+    public function imprimirFigurasParaGaleria(){
+
+            $html="";
+
+            for($i=0;$i<sizeof($this->lista);$i++){
+
+                $html .= $this->lista[$i]->imprimeGaleria();
+            }
+        
+            return $html;
+
+    }
+
 
 
 

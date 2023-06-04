@@ -22,7 +22,7 @@ if(isset($_POST) && !empty($_POST)){
     }else if(empty($_POST['mail2'])){
         $mailOrUsername = addslashes($_POST['mail1']);
         if($usuario->login($mailOrUsername,$pass)){
-            header("location:index.php");
+            header("location:verObjetos.php");
             $errorMensajeLogin = "";
          }else{
             $errorMensajeLogin = "Hubo un error en el inicio de sesión, el usuario o contraseña introducido no es correcto.";          

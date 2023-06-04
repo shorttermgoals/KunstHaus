@@ -12,6 +12,7 @@ if($_SESSION['permiso']<2){
 
 $objeto = new ObjetoKunst();
 
+
 if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $id = intval($_GET['id']);
@@ -28,6 +29,8 @@ if(isset($_POST) && !empty($_POST)){
         header('location:listarObjetos.php');
     }else {
         // Insertar
+        $_POST['id_creador'] = $_SESSION['id_usuario'];
+        $_POST['usuario_creador'] = $_SESSION['username'];
         $objeto->insertar($_POST, $_FILES['foto']);
         header('location:listarObjetos.php');
     }

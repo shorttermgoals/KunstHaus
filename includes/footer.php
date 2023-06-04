@@ -11,9 +11,6 @@
                     <div class="contenedorNavFooterMenu-elemento-noHover">
                         <li><a href="terminos.php">Términos</a></li>
                     </div>
-                    <div class="contenedorNavFooterMenu-elemento-noHover">
-                        <li><a href="quienesSomos.php">Nosotros</a></li>
-                    </div>
                 </div>
         </div>
     </div>

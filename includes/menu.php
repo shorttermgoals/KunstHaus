@@ -3,13 +3,13 @@
         <div class="contenidosNav">
             <div class="contenedorNavFooterMenu-izq">
                 <div class="contenedorNavFooterMenu-elemento-img">
-                    <li><a id="menu-home" href="index.php"><img src="./images/logos/LogoMini.png" style="width: 40px;"></a></li>
+                    <li><a id="menu-home" href="verObjetos.php"><img src="./images/logos/LogoMini.png" style="width: 40px;"></a></li>
                 </div>
                 <?php
     
                     if($_SESSION['permiso']>1){
                     echo '<div class="contenedorNavFooterMenu-elemento">
-                        <li><a id="menu-obj"class="nav-link" href="listarObjetos.php">Data objetos</a></li>
+                        <li><a id="menu-obj"class="nav-link" href="listarObjetos.php">Publicaciones</a></li>
                     </div>';
                     echo '<div class="contenedorNavFooterMenu-elemento">
                     <li><a id="menu-usr" class="nav-link" href="listarUsuarios.php">Usuarios</a></li>
@@ -17,9 +17,6 @@
                     }
     
                 ?>
-                <div class="contenedorNavFooterMenu-elemento">
-                    <li><a id="menu-v-obj" class="nav-link" href="verObjetos.php">Ver Objetos</a></li>
-                </div>
                 <div class="contenedorNavFooterMenu-elemento">
                     <li><a id="menu-contacto" class="nav-link" href="contacto.php">Contacto</a></li>
                 </div>
@@ -60,7 +57,7 @@
                     <?php
                     if($_SESSION['permiso']>1){
                         echo '<div class="textoPopup-wide">
-                            <a  href="listarObjetos.php">OBJETOS</a>
+                            <a  href="listarObjetos.php">PUBLICACIONES</a>
                         </div>';
                         echo '<div class="textoPopup-wide">
                             <a href="listarUsuarios.php">USUARIOS</a>

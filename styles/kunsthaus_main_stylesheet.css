@@ -599,6 +599,19 @@ label {
     
 }
 
+.popupArea-publicacion{
+    height: 500px;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+
+    z-index: 99999;
+}
+
 .contenedorPopup {
     width: 350px;
     height: 100%;
@@ -630,6 +643,33 @@ label {
     text-decoration: none;
     list-style: none;
     display: hidden;
+}
+
+.contenedorPopup-publicacion {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    justify-content: center;
+
+}
+
+.descPublicacionPopup{
+    width: 400px;
+    padding: 25px;
+}
+
+.cerrarPublicacionPopup{
+    display: grid;
+    justify-content: end;
+    padding: 0% 0% 10% 0%;
+}
+
+.elementoContenidoPublicacionPopup{
+    width: 100%;
+    padding: 2% 0%;
+    word-wrap: break-word;
 }
 
 .tituloPopup {
@@ -810,6 +850,64 @@ label {
     cursor: pointer;
 }
 
+.contenedorPostsObj{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 40px;
+    grid-column-gap: 80px;
+    justify-content: center;
+}
+
+.postObj{
+    width: 400px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.062);
+    padding: 2% 2.5%;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    display: grid;
+    grid-template-rows:     auto
+                            75%
+                            auto;
+}
+
+.tituloPostObj{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.tituloPostObj a{
+    font-size: 15px;
+}
+
+.fotoPostObj{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: white;
+}
+
+.fotoPostObj img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nombrePostObj{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.nombrePostObj a{
+    font-size: 15px;
+}
+
 
 @media (max-width: 1440px) {
     .contenedorNavFooter {
@@ -860,11 +958,17 @@ label {
         background-color: white;
     }
 
-    .loginArea{
-        background-color: white;width: 400px;
+    .formDialog-login{
+        background-color: white;
+    }
+
+    .formArea-login{
+
+        background-color: white;
+        width: 400px;
         border-radius: 0px;
-        background: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+        background: white;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
     }
 
     .popupDialog {
@@ -942,9 +1046,15 @@ label {
     .datoForm-wide-label{
         width: 300px;
     }
+
+    .contenedorNavFooterMenu-elemento-noHover a{
+        font-size: 8px;
+    }
   }
 
   @media (max-width: 320px){
+
+    
     .datoForm-wide input{
         width: 280px;
     }
@@ -970,6 +1080,9 @@ label {
         font-size: 10px;
     }
 
+    .contenedorPopup{
+        width: 300px;
+    }
     
 
     .tituloTextPage a{
@@ -984,5 +1097,8 @@ label {
         font-size: 20px;
     }
 
+    .contenedorNavFooterMenu-elemento-noHover a{
+        font-size: 6px;
+    }
     
   }
