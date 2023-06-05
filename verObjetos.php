@@ -39,46 +39,19 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 <?php
 include "includes/menu.php";
 ?>
-<section>
+<section>   
     <div class="formDialog-wide">
-        <div class="formArea-wide">         
+        <div class="formArea-wide">
+            <div class="buscadorPostsObj">
+                <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+                    <input name="buscar" type="text" placeholder="Buscador">
+                    <div class="botonesBuscadorPost">
+                        <button type="submit"><a>Buscar</a></button>
+                        <button type="submit"><a>↻</a></button>
+                    </div>
+                </form>      
+            </div>
             <div class="contenedorPostsObj">
-                <div class="postObj">
-                    <div class="tituloPostObj">
-                        <a><strong>asd</strong></a>
-                    </div>
-                    <div class="fotoPostObj">
-                        <a href="#popupPublicacion">
-                            <img src="./fotos/gt3_backview.jpg"></img>
-                        </a>
-                    </div>
-                    <div class="nombrePostObj">
-                        <a>asd</a>
-                    </div>
-                    <div id="popupPublicacion" class="popupDialog">
-                        <div id="popupArea" class="popupArea-publicacion">
-                            <div class="contenedorPopup-publicacion">
-                                <div class="imagenPopup">
-                                    <img src="./fotos/mercedes_sideview.jpg" style="height: 500px">
-                                </div>
-                                <div class="descPublicacionPopup">
-                                    <div class="cerrarPublicacionPopup">
-                                        <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
-                                    </div>
-                                    <div class="elementoContenidoPublicacionPopup">
-                                        <a>Porsche 911 (997.2) GT3 by shorttermhector</a>
-                                    </div>
-                                    <div class="elementoContenidoPublicacionPopup">
-                                        <a></a>
-                                    </div>
-                                    <div class="elementoContenidoPublicacionPopup">
-                                        <a>Fotografía</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <?php
                     echo $lista->imprimirFigurasParaGaleria();
                 ?>

@@ -17,7 +17,7 @@ class ListaObjetos{
 
         $sqlBusca = "";
         if(strlen($txt)>0){
-            $sqlBusca = " WHERE nombre LIKE '%".$txt."%' OR color LIKE '%".$txt."%' OR material LIKE '%".$txt."%' OR categoria LIKE '%".$txt."%' OR coleccion LIKE '%".$txt."%'";
+            $sqlBusca = " WHERE id LIKE '%".$txt."%' OR nombre LIKE '%".$txt."%' OR color LIKE '%".$txt."%' OR material LIKE '%".$txt."%' OR categoria LIKE '%".$txt."%' OR coleccion LIKE '%".$txt."%' OR usuario_creador LIKE '%".$txt."%'";
         }
 
         $sql = "SELECT * FROM ".$this->tabla." ".$sqlBusca.";";
@@ -38,22 +38,30 @@ class ListaObjetos{
 
     public function imprimirFigurasEnBack(){
 
-        $html = "<table>";
-        $html .= "<tr><th>ID</th>
-                        <th>Nombre</th>
-                        <th>Color</th>
-                        <th>Material</th>
-                        <th>Categoria</th>
-                        <th>Colección</th>
-                        <th>Descripción</th>
-                        <th>Fecha de creación</th>
-                        <th>Foto</th>
-                        <th colspan='3'></th></tr>";
+        $html = "<div class='listaObj'>
+                    <div class='filaListaObj'>
+                        <div class='elementoListaObj-titulo'>
+                            <a><strong>ID</strong></a>
+                        </div>
+                        <div class='elementoListaObj-titulo'>
+                            <a><strong>Nombre</strong></a>
+                        </div>
+                        <div class='elementoListaObj-titulo'>
+                            <a><strong>Descripción</strong></a>
+                        </div>
+                        <div class='elementoListaObj-titulo'>
+                            <a><strong>F. Creación</strong></a>
+                        </div>
+                        <div class='elementoListaObj-titulo'>
+                            <a><strong>Creador</strong></a>
+                        </div>
+                    </div>
+                ";
             for($i=0;$i<sizeof($this->lista);$i++){
 
                 $html .= $this->lista[$i]->imprimeteEnTr();
             }
-        $html .= "</table>";
+        $html .= "</div>";
 
             return $html;
 

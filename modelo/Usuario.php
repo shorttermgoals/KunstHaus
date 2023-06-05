@@ -274,45 +274,57 @@ class Usuario{
      */
     public function imprimeteEnTr(){
 
-        $html = "<tr><td>".$this->id."</td>
-                    <td>".$this->nombre."</td>
-                    <td>".$this->username."</td>
-                    <td>".$this->mail."</td>
-                    <td>".$this->permiso."</td>";
+        $html = "<div class='filaListaObj'>
+                    <div class='elementoListaObj'>
+                        <a>".$this->id."</a>
+                    </div>
+                    <div class='elementoListaObj'>
+                        <a>".$this->username."</a>
+                    </div>
+                    <div class='elementoListaObj'>
+                        <a>".$this->mail."</a>
+                    </div>
+                    <div class='elementoListaObj'>
+                        <a>".$this->permiso."</a>
+                    </div>";
 
                  if($_SESSION['permiso']>1) {
 
-                    $html.= "<td ><a href = 'ed_usuarios.php?id=".$this->id."' > Editar</a > </td >
-                    <td ><a href = '#popupEliminar?id=".$this->id."'>Borrar</a></td>
-                    <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
-                        <div class='popupArea'>
-                            <div class='contenedorPopup'>
-                                <div class='tituloPopup'>
-                                    <div class='vacio'></div>
-                                    <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
-                                    <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
+                    $html.= "<a class='elementoListaObj-btnEd' href='ed_objeto.php?id=".$this->id."'>
+                    Editar
+                </a>
+                <a class='elementoListaObj-btnEl' href='#popupEliminar?id=".$this->id."'>
+                    Borrar
+                </a>
+                <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
+                    <div class='popupArea'>
+                    <div class='contenedorPopup'>
+                        <div class='tituloPopup'>
+                            <div class='vacio'></div>
+                            <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
+                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
+                        </div>
+                        <div class='texto'>
+                        <a>Precaución, ".$this->id." será eliminado permanentemente, ¿Continuar?</a>
+                        </div>
+                        <div class='texto'>
+                            <div class='customMenuPopup'>
+                                <div class='cerrarPopup'>
+                                    <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
                                 </div>
-                                <div class='texto'>
-                                   <a>Precaución, todos los datos del registro con id ".$this->id." serán eliminados por completo, ¿Continuar?</a>
-                                </div>
-                                <div class='texto'>
-                                    <div class='customMenuPopup'>
-                                        <div class='cerrarPopup'>
-                                            <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
-                                        </div>
-                                        <div class='cerrarPopup'>                                        
-                                            <a href='llamadas/borrarUsuario.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
-                                        </div>
-                                    </div>
+                                <div class='cerrarPopup'>                                        
+                                    <a href='llamadas/borrarUsuario.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
                                 </div>
                             </div>
-
-    
                         </div>
-                    </div>";
+                    </div>
+
+
+                </div>
+                </div>";
                 }
 
-                   $html .= "</tr>";
+                   $html .= "</div>";
 
         return $html;
 

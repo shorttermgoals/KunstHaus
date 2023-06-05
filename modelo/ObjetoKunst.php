@@ -293,50 +293,61 @@ class ObjetoKunst{
      */
     public function imprimeteEnTr(){
 
-            $html = "<tr><td>".$this->id."</td>
-                        <td>".$this->nombre."</td>
-                        <td>".$this->color."</td>
-                        <td>".$this->material."</td>
-                        <td>".$this->categoria."</td>
-                        <td>".$this->coleccion."</td>
-                        <td>".$this->descripcion."</td>
-                        <td>".$this->fcreacion."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width: 200px;'></td>";
+            $usuarioCreador = $this->obtenerUsuarioCreadorDesdeBD();
+
+            $html = "<div class='filaListaObj'>
+                        <div class='elementoListaObj'>
+                            <a>".$this->id."</a>
+                        </div>
+                        <div class='elementoListaObj'>
+                            <a>".$this->nombre."</a>
+                        </div>
+                        <div class='elementoListaObj'>
+                            <a>".$this->descripcion."</a>
+                        </div>
+                        <div class='elementoListaObj'>
+                            <a>".$this->fcreacion."</a>
+                        </div>
+                        <div class='elementoListaObj'>
+                            <a>".$usuarioCreador."</a>
+                        </div>
+                        ";
 
                      if($_SESSION['permiso']>1) {
 
-                        $html.= "<td ><a href = 'ed_objeto.php?id=".$this->id."' > Editar</a > </td >
-                        <td ><a href = '#popupEliminar?id=".$this->id."'>Borrar</a></td>
-                        <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
-                            <div class='popupArea'>
-                            <div class='contenedorPopup'>
-                                <div class='tituloPopup'>
-                                    <div class='vacio'></div>
-                                    <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
-                                    <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
-                                </div>
-                                <div class='texto'>
-                                   <a>Precaución, ".$this->nombre." será eliminado permanentemente, ¿Continuar?</a>
-                                </div>
-                                <div class='texto'>
-                                    <div class='customMenuPopup'>
-                                        <div class='cerrarPopup'>
-                                            <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
+                        $html.= "<a class='elementoListaObj-btnEl' href='#popupEliminar?id=".$this->id."'>
+                                    Borrar
+                                </a>
+                                <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
+                                    <div class='popupArea'>
+                                    <div class='contenedorPopup'>
+                                        <div class='tituloPopup'>
+                                            <div class='vacio'></div>
+                                            <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
+                                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
                                         </div>
-                                        <div class='cerrarPopup'>                                        
-                                            <a href='llamadas/borrarObjeto.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
+                                        <div class='texto'>
+                                        <a>Precaución, ".$this->nombre." será eliminado permanentemente, ¿Continuar?</a>
+                                        </div>
+                                        <div class='texto'>
+                                            <div class='customMenuPopup'>
+                                                <div class='cerrarPopup'>
+                                                    <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
+                                                </div>
+                                                <div class='cerrarPopup'>                                        
+                                                    <a href='llamadas/borrarObjeto.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-    
-                        </div>
-                        </div>
+            
+                                </div>
+                                </div>
                         ";
                      }
 
-                       $html .= "</tr>";
+                       $html .= "</div>";
 
             return $html;
 
@@ -373,7 +384,7 @@ class ObjetoKunst{
                         <div id='popupArea' class='popupArea-publicacion'>
                             <div class='contenedorPopup-publicacion'>
                                 <div class='imagenPopup'>
-                                    <img src='".$this->carpetaFotos.$this->foto."' style='height: 500px'>
+                                    <img src='".$this->carpetaFotos.$this->foto."'>
                                 </div>
                                 <div class='descPublicacionPopup'>
                                     <div class='cerrarPublicacionPopup'>
@@ -381,14 +392,17 @@ class ObjetoKunst{
                                             <img src='./images/icons/icon-close.png' style='width: 15px;'>
                                         </a>      
                                     </div>
-                                    <div class='elementoContenidoPublicacionPopup'>
-                                        <a>".$this->nombre." by ".$usuarioCreador."</a>
+                                    <div class='elementoContenidoPublicacionPopup-titulo'>
+                                        <a><strong>".$this->nombre." by ".$usuarioCreador."</strong></a>
                                     </div>
                                     <div class='elementoContenidoPublicacionPopup'>
                                         <a>".$this->descripcion."</a>
                                     </div>
-                                    <div class='elementoContenidoPublicacionPopup'>
-                                        <a>".$this->categoria."</a>
+                                    <div class='elementoContenidoPublicacionPopup-desc'>
+                                        <a><strong>".$this->categoria."</strong></a>
+                                        <a><strong>".$this->coleccion."</strong></a>
+                                        <a><strong>".$this->material."</strong></a>
+                                        <a><strong>".$this->color."</strong></a>
                                     </div>
                                 </div>
                             </div>
@@ -403,25 +417,27 @@ class ObjetoKunst{
 
         $html = "<table border='1'>";
 
-            $html .= "<tr><th>ID</th>
-                        <th>Nombre</th>
-                        <th>Color</th>
-                        <th>Material</th>
-                        <th>Categoria</th>
-                        <th>Coleccion</th>
-                        <th>Descripción</th>
-                        <th>Fecha de creación</th>
-                        <th>Foto</th>
+            $html .= "<tr class='filaListaObj'>
+                        <th class='elementoListaObj-titulo'>ID</th>
+                        <th class='elementoListaObj-titulo'>Nombre</th>
+                        <th class='elementoListaObj-titulo'>Color</th>
+                        <th class='elementoListaObj-titulo'>Material</th>
+                        <th class='elementoListaObj-titulo'>Categoria</th>
+                        <th class='elementoListaObj-titulo'>Coleccion</th>
+                        <th class='elementoListaObj-titulo'>Descripción</th>
+                        <th class='elementoListaObj-titulo'>Fecha de creación</th>
+                        <th class='elementoListaObj-titulo'>Foto</th>
                        </tr>";
-            $html .="  <tr><td>".$this->id."</td>
-                        <td>".$this->nombre."</td>
-                        <td>".$this->color."</td>
-                        <td>".$this->material."</td>
-                        <td>".$this->categoria."</td>
-                        <td>".$this->coleccion."</td>
-                        <td>".$this->descripcion."></td>
-                        <td>".$this->fcreacion."</td>
-                        <td><img src='".$this->carpetaFotos.$this->foto."' style='width:200px'></td>
+            $html .="  <tr class='filaListaObj'>
+                        <td class='elementoListaObj'>".$this->id."</td>
+                        <td class='elementoListaObj'>".$this->nombre."</td>
+                        <td class='elementoListaObj'>".$this->color."</td>
+                        <td class='elementoListaObj'>".$this->material."</td>
+                        <td class='elementoListaObj'>".$this->categoria."</td>
+                        <td class='elementoListaObj'>".$this->coleccion."</td>
+                        <td class='elementoListaObj'>".$this->descripcion."></td>
+                        <td class='elementoListaObj'>".$this->fcreacion."</td>
+                        <td class='elementoListaObj'><img src='".$this->carpetaFotos.$this->foto."' style='width:200px'></td>
                         </tr></table>";
 
         return $html;

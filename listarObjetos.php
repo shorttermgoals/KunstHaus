@@ -45,25 +45,29 @@ include "includes/menu.php";
 ?>
 <section>
 
-    <h1>Lista de objetos de la colección</h1>
-
-    <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
-        <input name="buscar" type="text" placeholder="Buscador"><input type="submit" value="Buscar">
-        <button type="submit">↻</button>
-    </form>
-
-
-    <div class="botones"><a href="ed_objeto.php">Añadir</a></div>
-    <div class="lista" id="lista">
-
-        <?php
-
-           echo  $lista->imprimirFigurasEnBack();
-
-        ?>
-
-
+<div class="formDialog-wide">
+    <div class="formArea-wide">
+        <div class="tituloForm-wide">
+            <a class="descForm-wide">
+                <strong>PUBLICACIONES</strong>
+            </a>
+        </div>
+        <div class="buscadorPostsObj">
+            <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+                <input name="buscar" type="text" placeholder="Buscador">
+                <div class="botonesBuscadorPost">
+                    <button type="submit"><a>Buscar</a></button>
+                    <button type="submit"><a>↻</a></button>
+                </div>
+            </form>      
+        </div>
+            <?php
+                echo $lista->imprimirFigurasEnBack();
+            ?>
+        </div>
     </div>
+</div>
+
 </section>
 <?php
 
@@ -71,6 +75,43 @@ include "includes/footer.php";
 
 ?>
 
+<script>
+    var ejecutado = false; // Variable de bandera
 
+
+window.addEventListener('load',function(){
+    var anchoPagina = window.innerWidth;
+    if (anchoPagina <= 1024 && !ejecutado){
+        ejecutado = true;
+        cambiarMenu();
+    } else if(anchoPagina >1024 && ejecutado){
+        ejecutado = false;
+        descambiarMenu();
+    }
+});
+
+window.addEventListener('resize', function() {
+    var anchoPagina = window.innerWidth;
+    if (anchoPagina <= 1024 && !ejecutado){
+        ejecutado = true;
+        cambiarMenu();
+    } else if(anchoPagina >1024 && ejecutado){
+        ejecutado = false;
+        descambiarMenu();
+    }
+});
+  
+function cambiarPantalla() {
+    var  = document.getElementById('menu-obj');
+    menu_saludo.style.display = 'none';
+
+}
+
+function descambiarPantalla() {
+    var menu_objetos = document.getElementById('menu-obj');
+    menu_popup.style.display = 'block';
+}
+
+</script>
 </body>
 </html>

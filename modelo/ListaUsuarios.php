@@ -17,7 +17,7 @@ class ListaUsuarios{
 
         $sqlBusca = "";
         if(strlen($txt)>0){
-            $sqlBusca = " WHERE nombre LIKE '%".$txt."%' OR username LIKE '%".$txt."%' OR mail LIKE '%".$txt."%'";
+            $sqlBusca = " WHERE id LIKE '%".$txt."%' OR nombre LIKE '%".$txt."%' OR username LIKE '%".$txt."%' OR mail LIKE '%".$txt."%'";
         }
 
         $sql = "SELECT * FROM ".$this->tabla." ".$sqlBusca.";";
@@ -38,18 +38,26 @@ class ListaUsuarios{
 
     public function imprimirFigurasEnBack(){
 
-        $html = "<table>";
-        $html .= "<tr><th>ID</th>
-                        <th>Nombre</th>
-                        <th>Mail</th>
-                        <th>Username</th>
-                        <th>Permiso</th>
-                        <th colspan='3'></th></tr>";
+        $html = "<div class='listaObj'>
+        <div class='filaListaObj'>
+            <div class='elementoListaObj-titulo'>
+                <a><strong>ID</strong></a>
+            </div>
+            <div class='elementoListaObj-titulo'>
+                <a><strong>Mail</strong></a>
+            </div>
+            <div class='elementoListaObj-titulo'>
+                <a><strong>Username</strong></a>
+            </div>
+            <div class='elementoListaObj-titulo'>
+                <a><strong>Permiso</strong></a>
+            </div>
+        </div>";
             for($i=0;$i<sizeof($this->lista);$i++){
 
                 $html .= $this->lista[$i]->imprimeteEnTr();
             }
-        $html .= "</table>";
+        $html .= "</div>";
 
             return $html;
 

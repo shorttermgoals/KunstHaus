@@ -42,25 +42,28 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 include "includes/menu.php";
 ?>
 <section>
-
-    <h1>Lista de usuarios de la colección</h1>
-
-    <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
-        <input name="buscar" type="text" placeholder="Buscador"><input type="submit" value="Buscar">
-        <button type="submit">↻</button>
-    </form>
-
-    
-    <div class="lista" id="lista">
-
-        <?php
-
-           echo  $lista->imprimirFigurasEnBack();
-
-        ?>
-
-
+<div class="formDialog-wide">
+    <div class="formArea-wide">
+        <div class="tituloForm-wide">
+            <a class="descForm-wide">
+                <strong>USUARIOS</strong>
+            </a>
+        </div>
+        <div class="buscadorPostsObj">
+            <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
+                <input name="buscar" type="text" placeholder="Buscador">
+                <div class="botonesBuscadorPost">
+                    <button type="submit"><a>Buscar</a></button>
+                    <button type="submit"><a>↻</a></button>
+                </div>
+            </form>      
+        </div>
+            <?php
+                echo  $lista->imprimirFigurasEnBack();
+            ?>
+        </div>
     </div>
+</div>
 </section>
 <?php
 
