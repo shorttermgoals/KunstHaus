@@ -20,11 +20,11 @@ class Usuario{
      * @param $pass
      * @param $permiso
      */
-    public function __construct($id="",$nombre="", $mail="", $username="", $pass="", $permiso=""){
+    public function __construct($id="",$nombre="", $username="", $mail="", $pass="", $permiso=""){
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->mail = $mail;
         $this->username = $username;
+        $this->mail = $mail;
         $this->pass = $pass;
         $this->permiso = $permiso;
         $this->tabla = "usuarios";
@@ -268,61 +268,115 @@ class Usuario{
 
     }
 
+    public function obtenerIDCreadorDesdeBD() {
+        // Realizar consulta a la base de datos para obtener la id del creador
+        $conexion = new ConexionBBDD();
+        $sql = "SELECT id FROM ".$this->tabla." WHERE id=".$this->id;
+        $res = $conexion->consulta($sql);
+        list($id) = mysqli_fetch_array($res);
+        
+        return $id;
+    }
+
     /**
      * Método que retorna una fila para la insercion en una tabla de la clase lista.
      * @return string
      */
     public function imprimeteEnTr(){
 
+        $idUsuario = $this->obtenerIDCreadorDesdeBD();
+        $permisoTexto = "";
+
+        if($this->permiso > 0){
+            $permisoTexto = "Admin";
+        }else{
+            $permisoTexto = "N/A";
+        }
+
         $html = "<div class='filaListaObj'>
                     <div class='elementoListaObj'>
                         <a>".$this->id."</a>
                     </div>
                     <div class='elementoListaObj'>
-                        <a>".$this->username."</a>
-                    </div>
-                    <div class='elementoListaObj'>
                         <a>".$this->mail."</a>
                     </div>
                     <div class='elementoListaObj'>
-                        <a>".$this->permiso."</a>
+                        <a>".$this->username."</a>
+                    </div>
+                    <div class='elementoListaObj'>
+                        <a>".$permisoTexto."</a>
                     </div>";
 
                  if($_SESSION['permiso']>1) {
 
-                    $html.= "<a class='elementoListaObj-btnEd' href='ed_objeto.php?id=".$this->id."'>
-                    Editar
-                </a>
-                <a class='elementoListaObj-btnEl' href='#popupEliminar?id=".$this->id."'>
-                    Borrar
-                </a>
-                <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
-                    <div class='popupArea'>
-                    <div class='contenedorPopup'>
-                        <div class='tituloPopup'>
-                            <div class='vacio'></div>
-                            <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
-                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
-                        </div>
-                        <div class='texto'>
-                        <a>Precaución, ".$this->id." será eliminado permanentemente, ¿Continuar?</a>
-                        </div>
-                        <div class='texto'>
-                            <div class='customMenuPopup'>
-                                <div class='cerrarPopup'>
-                                    <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
-                                </div>
-                                <div class='cerrarPopup'>                                        
-                                    <a href='llamadas/borrarUsuario.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
+                    $selector = "";
+                    if($this->permiso > 0){
+                        $selector = "<select name='permiso' required>
+                        <option value=''>Permiso</option>
+                        <option value='0'>N/A</option>
+                        <option value='7' selected>Admin</option>
+                        </select>";
+                    }else{
+                        $selector = "<select name='permiso' required>
+                        <option value=''>Permiso</option>
+                        <option value='0' selected>N/A</option>
+                        <option value='7'>Admin</option>
+                        </select>";
+                    }
+
+                    $html.= "<a class='elementoListaObj-btnEd' href='#popupEditar?id=".$this->id."'>
+                                Editar
+                            </a>
+                            <a class='elementoListaObj-btnEl' href='#popupEliminar?id=".$this->id."'>
+                                Borrar
+                            </a>
+                            <div id='popupEditar?id=".$this->id."' class='popupDialog'>
+                                <div id='popupArea' class='popupArea'>
+                                    <div class='contenedorPopup'>
+                                        <div class='tituloPopup'>
+                                            <div class='vacio'></div>
+                                            <a class='descPopup' style='font-size: 18px;'><strong>EDITAR USUARIO</strong></a>
+                                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src=''./images/icons/icon-close.png' style='width: 15px;'></a>      
+                                        </div>
+                                        <form name='usuarios' action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+                                            <input type='hidden' name='id' value='".$idUsuario."'>
+                                            <div class='dato-input'>
+                                                <li>
+                                                    ".$selector."
+                                                </li>
+                                            </div>
+                                            <div class='botonRegistro'>
+                                                <input type='submit' value='Guardar'>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>                            
+                            </div>
+                            <div id='popupEliminar?id=".$this->id."' class='popupDialog'>
+                                <div class='popupArea'>
+                                    <div class='contenedorPopup'>
+                                        <div class='tituloPopup'>
+                                            <div class='vacio'></div>
+                                            <a class='descPopup' style='font-size: 18px;'><strong>PRECAUCIÓN</strong></a>
+                                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
+                                        </div>
+                                        <div class='texto'>
+                                            <a>Precaución, ".$this->id." será eliminado permanentemente, ¿Continuar?</a>
+                                        </div>
+                                        <div class='texto'>
+                                            <div class='customMenuPopup'>
+                                                <div class='cerrarPopup'>
+                                                    <a href='#cerrar' title='Cerrar' class='cerrar' style='text-decoration: none; color:black;' >NO</a>
+                                                </div>
+                                                <div class='cerrarPopup'>                                        
+                                                    <a href='llamadas/borrarUsuario.php?id=".$this->id."' style='text-decoration: none; color:black;'>SI</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                </div>";
-                }
+                ";}
 
                    $html .= "</div>";
 

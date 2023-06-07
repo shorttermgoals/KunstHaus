@@ -11,12 +11,36 @@ if($_SESSION['permiso']<2){
 
 
 $lista = new ListaUsuarios();
+$usuario = new Usuario();
+
+
 if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
 
     $lista->obtenerElementos(addslashes($_GET['buscar']));
 
 }else {
     $lista->obtenerElementos();
+}
+
+if(isset($_GET['id']) && !empty($_GET['id'])){
+
+    $id = intval($_GET['id']);
+    $usuario->obtenerPorId($id);
+
+}
+
+if(isset($_POST) && !empty($_POST)){
+
+    if(!empty($_POST['id'])){
+       //Actualizar
+        $id = intval($_POST['id']);
+        $usuario->update($id,$_POST);
+        header('location:listarUsuarios.php');
+    }
+   // header('location:listarFiguras.php');
+
+
+
 }
 
 

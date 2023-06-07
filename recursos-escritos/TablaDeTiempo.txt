@@ -6,8 +6,8 @@ Mock-up galeria: 20 minutos
 CRUD: 540 minutos
 Registro: 325 minutos
 Mejoras de accesibilidad de login y registro: 120 minutos
-Menu administrativo de los usuarios: 60 minutos
+Menu administrativo de los usuarios: 100 minutos
 Contacto: 95 minutos
 Añadir languaje toggle: 60 minutos
-CSS: 1335 minutos
-Documentación: 316 minutos
+CSS: 1405 minutos
+Documentación: 399 minutos

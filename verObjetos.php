@@ -42,6 +42,11 @@ include "includes/menu.php";
 <section>   
     <div class="formDialog-wide">
         <div class="formArea-wide">
+        <div class="tituloForm-wide">
+            <a class="descForm-wide">
+                <strong>GALERÍA</strong>
+            </a>
+        </div>
             <div class="buscadorPostsObj">
                 <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
                     <input name="buscar" type="text" placeholder="Buscador">
