@@ -501,11 +501,10 @@ label {
 
 .contenedorTextoForm {
     width: 250px;
-    height: 50px;
+    max-height: 300px;
     padding: 0px 5px;
-    display: grid;
-    justify-content: center;
-    align-content: center;
+    word-wrap: break-word;
+    overflow-y: scroll;
 }
 
 .datosHrefPoliticas {
@@ -1256,6 +1255,23 @@ label {
         grid-template-columns: auto auto ;
     }
 
+    .imagenPopup{
+        display: grid;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .imagenPopup img{
+        height: 400px;
+        width: 600px;
+        object-fit: cover;
+    }
+
+    .descPublicacionPopup{
+        width: 250px;
+        padding: 10px;
+    }
+
 }
 
 @media (max-width: 1200px){
@@ -1288,23 +1304,6 @@ label {
         font-size: 15px;
     }
 
-    .imagenPopup{
-        display: grid;
-        justify-content: center;
-        align-content: center;
-    }
-
-    .imagenPopup img{
-        height: 400px;
-        width: 600px;
-        object-fit: cover;
-    }
-
-    .descPublicacionPopup{
-        width: 250px;
-        padding: 10px;
-    }
-
     .filaListaObj{
         grid-template-columns: 30px 200px 200px 100px 150px 150px;
     }
@@ -1327,6 +1326,29 @@ label {
 
     .cabeceraUsuarioPerfil{
         min-width: 0px;
+    }
+
+    .popupArea-publicacion{
+        position: relative;
+        display: grid;
+        justify-content: center;
+        border-radius: 15px;
+    }
+
+    .contenedorPopup-publicacion{
+        grid-template-columns: auto ;
+    }
+
+    .imagenPopup{
+        padding: 20px;
+    }
+
+    .descPublicacionPopup{
+        width: 600px;
+    }
+
+    .cerrarPublicacionPopup{
+        padding: 0% 0% 0% 0%;
     }
 }
 
@@ -1360,28 +1382,6 @@ label {
         width: 500px;
     }
 
-    .popupArea-publicacion{
-        position: relative;
-        display: grid;
-        justify-content: center;
-        border-radius: 15px;
-    }
-
-    .contenedorPopup-publicacion{
-        grid-template-columns: auto ;
-    }
-
-    .imagenPopup{
-        padding: 20px;
-    }
-
-    .descPublicacionPopup{
-        width: 600px;
-    }
-
-    .cerrarPublicacionPopup{
-        padding: 0% 0% 0% 0%;
-    }
 
     .filaListaObj{
         grid-template-columns: 30px 150px 150px 100px 100px 100px;
@@ -1413,6 +1413,26 @@ label {
     .elementoListaObj img{
         width: 0px;
     }
+
+    .imagenPopup img{
+        width: 100%;
+        height: auto;
+    }
+
+    .descPublicacionPopup{
+        width: 100%;
+    }
+
+    .popupArea-publicacion{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+        padding: 10px;
+    }
+
+    .imagenPopup{
+        padding: 0px;
+    }
 }
 
 @media (max-width: 650px) {
@@ -1439,6 +1459,7 @@ label {
     .letraErr{
         width: 100px;
         height: 100px;   
+        font-size: 20px;
     }
     
     .numErr{
@@ -1456,20 +1477,54 @@ label {
 
 @media (max-width: 550px) {
     .letraErr{
-        width: 80px;
-        height: 80px;   
+        width: 70px;
+        height: 70px;   
     }
     
     .numErr{
-        width: 80px;
-        height: 80px;
-        font-size: 8px;
+        width: 70px;
+        height: 70px;
+        font-size: 7px;
     }
     
     .huecoErr{
-        width: 80px;
-        height: 80px;
-        font-size: 8px;
+        width: 70px;
+        height: 70px;
+        font-size: 7px;
+    }
+
+    .tituloForm-wide a{
+        font-size: 20px;
+    }
+
+    .datoForm-wide input{
+        width: 350px;
+    }
+
+    .datoForm-wide select{
+        width: 375px;
+    }
+
+    .datoForm-wide-textArea textarea{
+        width: 350px;
+    }
+
+    .datoForm-wide-label{
+        width: 350px;
+    }
+
+    .tituloTextPage a{
+        font-size: 25px
+    }
+    
+    .bloqueTextPage{
+        width: 300px;
+        grid-row-gap: 10px;
+    }
+
+    .contenedorTextPage{
+        grid-template-rows: 150px
+                            auto;
     }
 }
 
@@ -1514,42 +1569,8 @@ label {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0);        
     }
 
-    .tituloForm-wide a{
-        font-size: 20px;
-    }
-
-    .datoForm-wide input{
-        width: 350px;
-    }
-
-    .datoForm-wide select{
-        width: 375px;
-    }
-
-    .datoForm-wide-textArea textarea{
-        width: 350px;
-    }
-
-    .datoForm-wide-label{
-        width: 350px;
-    }
-
     .contenedorNavFooterMenu-elemento-noHover a{
         font-size: 10px;
-    }
-
-    .tituloTextPage a{
-        font-size: 25px
-    }
-    
-    .bloqueTextPage{
-        width: 300px;
-        grid-row-gap: 10px;
-    }
-
-    .contenedorTextPage{
-        grid-template-rows: 150px
-                            auto;
     }
 
     .contenidoBloque a{
@@ -1560,33 +1581,30 @@ label {
         grid-template-columns: auto ;
     }
 
-    .imagenPopup img{
-        width: 100%;
-        height: auto;
-    }
-
-    .descPublicacionPopup{
-        width: 100%;
-    }
-
-    .popupArea-publicacion{
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
-        padding: 10px;
-    }
-
-    .imagenPopup{
-        padding: 0px;
-    }
-
     .filaListaObj{
         grid-template-columns: 30px 50px 100px 50px 40px 40px;
     }
 
 }
 
-  @media (max-width: 375px){
+@media (max-width: 400px) {
+    .letraErr{
+        width: 60px;
+        height: 60px;   
+    }
+    
+    .numErr{
+        width: 60px;
+        height: 60px;
+        font-size: 7px;
+    }
+    
+    .huecoErr{
+        width: 60px;
+        height: 60px;
+        font-size: 7px;
+    }
+
     .datoForm-wide input{
         width: 300px;
     }
@@ -1603,6 +1621,10 @@ label {
     .datoForm-wide-label{
         width: 300px;
     }
+}
+
+  @media (max-width: 375px){
+    
 
     .contenedorNavFooterMenu-elemento-noHover a{
         font-size: 8px;

@@ -11,7 +11,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     $id = intval($_GET['id']);
     if($usuario->eliminarUsuario($id)){
-        header('location: ../inicio.php');
+        header('location: ../index.php');
         exit();
     }
 

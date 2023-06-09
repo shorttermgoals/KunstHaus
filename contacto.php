@@ -20,7 +20,6 @@ if(isset($_POST) && !empty($_POST)){
 
 
     
-    //header("location:inicio.php");
 
 
 }
@@ -54,10 +53,10 @@ include "includes/menu.php";
                         </div>
                         <form name="contenido" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
                             <div class="datoForm-wide">
-                                <li><input type="text" name="nombre" placeholder="Nombre" value="<?php echo $contacto->getNombre()?>" required></li>
+                                <li><input type="text" name="nombre" placeholder="Nombre" maxlength="60" value="<?php echo $contacto->getNombre()?>" required></li>
                             </div>
                             <div class="datoForm-wide">
-                                <li><input type="text" name="mail" placeholder="Mail" value="<?php echo $contacto->getMail()?>" required></li>
+                                <li><input type="text" name="mail" placeholder="Mail" maxlength="100" value="<?php echo $contacto->getMail()?>" required></li>
                             </div>
                             <div class="datoForm-wide">
                                 <li><select name="inquiry" required>

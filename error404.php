@@ -40,13 +40,13 @@
     var numsErr = document.getElementsByClassName('numErr');
 
     for (var i = 0; i < letrasErr.length; i++) {
-        letrasErr[i].style.backgroundColor = 'transparent'; // Cambia el color de fondo de las letrasErr
-        letrasErr[i].style.color = 'transparent'; // Cambia el color del texto de las letrasErr
+        letrasErr[i].style.backgroundColor = 'transparent'; 
+        letrasErr[i].style.color = 'transparent'; 
     }
 
     for (var i = 0; i < numsErr.length; i++) {
-        numsErr[i].style.backgroundColor = 'black'; // Cambia el color de fondo de los numsErr
-        numsErr[i].style.color = 'white'; // Cambia el color del texto de los numsErr
+        numsErr[i].style.backgroundColor = 'black'; 
+        numsErr[i].style.color = 'white'; 
     }
     }
 
@@ -55,13 +55,13 @@
     var numsErr = document.getElementsByClassName('numErr');
 
     for (var i = 0; i < letrasErr.length; i++) {
-        letrasErr[i].style.backgroundColor = ''; // Restaura el color de fondo de las letrasErr
-        letrasErr[i].style.color = ''; // Restaura el color del texto de las letrasErr
+        letrasErr[i].style.backgroundColor = ''; 
+        letrasErr[i].style.color = ''; 
     }
 
     for (var i = 0; i < numsErr.length; i++) {
-        numsErr[i].style.backgroundColor = ''; // Restaura el color de fondo de los numsErr
-        numsErr[i].style.color = ''; // Restaura el color del texto de los numsErr
+        numsErr[i].style.backgroundColor = ''; 
+        numsErr[i].style.color = ''; 
     }
     }
 

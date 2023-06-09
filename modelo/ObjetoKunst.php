@@ -481,7 +481,7 @@ class ObjetoKunst{
                             <form name='usuarios' action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
                                 <input type='hidden' name='id' value='".$this->id."'>
                                 <div class='dato-input'>
-                                    <li><input type='text' placeholder='Nombre' name='nombre' value='".$this->nombre."' required > </li>
+                                    <li><input type='text' placeholder='Nombre' name='nombre' maxlength='35' value='".$this->nombre."' required > </li>
                                 </div>
                                 <div class='dato-input'>
                                     <li>
@@ -537,7 +537,7 @@ class ObjetoKunst{
                                     </li>
                                 </div>
                                 <div class='dato-input'>
-                                    <li><input type='text' placeholder='Colección' name='coleccion' value='".$this->coleccion."' required> </li>
+                                    <li><input type='text' placeholder='Colección' name='coleccion' maxlength='50' value='".$this->coleccion."' required> </li>
                                 </div>
                                 <div class='dato-input'>
                                     <li><input type='date' placeholder='Fecha de creación' name='fcreacion' value='".$this->fcreacion."' required> </li>
@@ -548,7 +548,7 @@ class ObjetoKunst{
                                     </li>
                                 </div>
                                 <div class='dato-input-textArea'>
-                                    <li><textarea placeholder='Descripción' name='descripcion' value='".$this->descripcion."' required></textarea></li>
+                                    <li><textarea placeholder='Descripción' maxlength='254' name='descripcion' value='".$this->descripcion."' required></textarea></li>
                                 </div>
                                 <div class='botonRegistro'>
                                     <input type='submit' value='Guardar'>
