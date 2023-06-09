@@ -35,6 +35,28 @@ class ListaObjetos{
 
     }
 
+    public function obtenerElementosParaPerfil($txt){
+
+        $sqlBusca = "";
+        if(strlen($txt)>0){
+            $sqlBusca = " WHERE id_creador LIKE '%".$txt."%'";
+        }
+
+        $sql = "SELECT * FROM ".$this->tabla." ".$sqlBusca.";";
+
+        $conexion = new ConexionBBDD();
+        $res = $conexion->consulta($sql);
+
+        while( list($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto) = mysqli_fetch_array($res) ){
+
+            $fila = new ObjetoKunst($id, $nombre, $color, $material, $categoria, $coleccion, $descripcion, $fcreacion, $foto);
+            array_push($this->lista,$fila);
+            //$this->lista[] = $fila;
+
+        }
+
+    }
+
 
     public function imprimirFigurasEnBack(){
 
@@ -79,6 +101,19 @@ class ListaObjetos{
             return $html;
 
     }
+
+    public function imprimirFigurasParaPerfil(){
+
+        $html="";
+
+        for($i=0;$i<sizeof($this->lista);$i++){
+
+            $html .= $this->lista[$i]->imprimePerfil();
+        }
+    
+        return $html;
+
+}
 
 
 

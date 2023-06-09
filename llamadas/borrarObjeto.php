@@ -11,7 +11,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     // $objeto->obtenerPorId($id);
     // echo $id;
     if($objeto->eliminarObjeto($id)){
-        header('location: ../listarObjetos.php');
+        header('location: ../perfil.php');
         exit();
     }
 

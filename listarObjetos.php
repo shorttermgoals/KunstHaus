@@ -6,7 +6,7 @@ require "modelo/ConexionBBDD.php";
 require "modelo/funciones.php";
 
 if($_SESSION['permiso']<2){
-    header('location:index.php');
+    header('location:error404.php');
 }
 
 

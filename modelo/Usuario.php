@@ -203,6 +203,13 @@ class Usuario{
         return true;
     }
 
+    public function eliminarPosts($id){
+        $conexion = new ConexionBBDD();
+        $sql = "DELETE FROM objetokunst WHERE  id_creador = ".$id;
+        $res = $conexion->consulta($sql);
+        return true;
+    }
+
     public function eliminarUsuario($id){
         $conexion = new ConexionBBDD();
         $sql = "DELETE FROM " .$this->tabla. " WHERE  id = ".$id;
@@ -213,7 +220,8 @@ class Usuario{
             alert("NO");
             return false;
         }
-
+        
+        $this->eliminarPosts($id);
         return true;
     }
 
@@ -336,7 +344,7 @@ class Usuario{
                                         <div class='tituloPopup'>
                                             <div class='vacio'></div>
                                             <a class='descPopup' style='font-size: 18px;'><strong>EDITAR USUARIO</strong></a>
-                                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src=''./images/icons/icon-close.png' style='width: 15px;'></a>      
+                                            <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
                                         </div>
                                         <form name='usuarios' action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
                                             <input type='hidden' name='id' value='".$idUsuario."'>
@@ -381,6 +389,39 @@ class Usuario{
                    $html .= "</div>";
 
         return $html;
+
+}
+
+public function imprimirPopupEditarUsuario(){
+
+    $html = "   <div id='popupEditar?id=".$this->id."' class='popupDialog'>
+                    <div id='popupArea' class='popupArea'>
+                        <div class='contenedorPopup'>
+                            <div class='tituloPopup'>
+                                <div class='vacio'></div>
+                                <a class='descPopup' style='font-size: 18px;'><strong>EDITAR USUARIO</strong></a>
+                                <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
+                            </div>
+                            <form name='usuarios' action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>
+                                <input type='hidden' name='id' value=''>
+                                <div class='dato-input'>
+                                    <li>
+                                        
+                                    </li>
+                                </div>
+                                <div class='botonRegistro'>
+                                    <input type='submit' value='Guardar'>
+                                </div>
+                            </form>
+                        </div>
+                    </div>                            
+                </div>";
+
+             
+
+               
+
+    return $html;
 
 }
 

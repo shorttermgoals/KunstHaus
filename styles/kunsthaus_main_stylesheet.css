@@ -234,7 +234,6 @@ label {
     display: grid;
     justify-self: center;
     align-self: center;
-    padding: 0px 0px 50px 0px;
 }
 
 .formArea-login {
@@ -255,6 +254,7 @@ label {
     justify-content: center;
     padding: 25px 0px ;
     background: transparent;
+    grid-row-gap: 40px;
 }
 
 .contenedorForm-login {
@@ -831,6 +831,25 @@ label {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
 }
 
+.dato-input-textArea {
+    display: grid;
+    justify-content: center;
+    padding: 5px 0px;
+
+}
+
+.dato-input-textArea textarea{
+    width: 240px;
+    height: 80px;
+    max-height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    resize: vertical;
+}
+
 .coloresRegistro {
     display: grid;
     grid-template-rows:     25px
@@ -887,12 +906,12 @@ label {
 .buscadorPostsObj{
     display: grid;
     justify-content: center;
-    padding: 5% 0%;
 }
 
 .buscadorPostsObj form{
     display: grid;
     justify-items: center;
+    grid-row-gap: 20px;
 }
 
 .buscadorPostsObj form input{
@@ -925,6 +944,17 @@ label {
     justify-content: center;
 }
 
+.contenedorPostsObjPerfil{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 40px;
+    grid-column-gap: 15px;
+    padding: 20px 0px;
+    justify-content: center;
+}
+
 .postObj{
     width: 400px;
     height: 500px;
@@ -937,6 +967,31 @@ label {
     grid-template-rows:     auto
                             75%
                             auto;
+}
+
+.postVacio{
+    width: 400px;
+    height: 30px;
+    padding: 2% 2.5%;
+}
+
+.postAnadirObj{
+    width: 400px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.062);
+    padding: 2% 2.5%;
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.postAnadirObj:hover{
+    opacity: 0.8;
 }
 
 .tituloPostObj{
@@ -1022,6 +1077,7 @@ label {
     align-content: center;
     text-decoration: none;
     color: black;
+    transition: opacity 0.3s ease;
 }
 
 .elementoListaObj-btnEd:hover{
@@ -1039,10 +1095,153 @@ label {
     align-content: center;
     text-decoration: none;
     color: black;
+    transition: opacity 0.3s ease;
 }
 
 .elementoListaObj-btnEl:hover{
     opacity: 0.8;
+}
+
+.cabeceraUsuarioPerfil{
+    width: 90%;
+    min-width: 800px;
+    height: 150px;
+    display: grid;
+    padding: 20px 0px;
+    justify-self: center;
+    justify-content: center;
+    background-color: rgb(233, 233, 233);
+    border: 1px solid rgba(0, 0, 0, 0.062);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+}
+
+.datosUsuarioPerfil{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 20px;
+    align-content: center;
+}
+
+.datosUsuarioPerfil a{
+    font-size: 60px;
+    display: grid;
+    align-self: center;
+}
+
+.botonEliminarUsuarioPerfil{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.areaBtnEliminarPerfil{
+    width: 200px;
+    background-color: black;
+    border: 1px solid rgb(24, 24, 24);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    border-radius: 15px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    opacity: 1;
+    text-decoration: none;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.areaBtnEliminarPerfil:hover{
+    opacity: 0.8;
+}
+
+.datosUsuarioPerfil a img{
+    width: 50px;
+}
+
+.edicionDePosts{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: center;
+}
+
+.btnEdicionPost{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    border: 1px solid rgb(24, 24, 24);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.062);
+    border-radius: 40px;
+    opacity: 1;
+    text-decoration: none;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.btnEdicionPost:hover{
+    opacity: 0.8;
+}
+
+.botonError404 {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.botonError404 button{
+    width: 100px;
+    height: 50px;
+    background-color: rgb(228, 228, 228);
+    border: none;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+}
+
+.botonError404 button:hover{
+    background-color: black;
+    color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+
+.elementosError{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+
+.letraErr{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(228, 228, 228);
+    color: black;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-size: 40px;
+    transition: background-color 1s ease;
+
+}
+
+.numErr{
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    color: transparent;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-size: 40px;
+    transition: background-color 1s ease;
+}
+
+.huecoErr{
+    width: 150px;
+    height: 150px;
 }
 
 
@@ -1116,11 +1315,41 @@ label {
         width: 300px;
         height: 400px;
     }
+
+    .postAnadirObj{
+        width: 300px;
+        height: 400px;
+    }
+
+    .postVacio{
+        width: 300px;
+    }
+
+    .cabeceraUsuarioPerfil{
+        min-width: 0px;
+    }
 }
 
 @media (max-width: 865px){
     .filaListaObj{
         grid-template-columns: 30px 200px 200px 100px 100px 100px;
+    }   
+    
+    .letraErr{
+        width: 120px;
+        height: 120px;   
+    }
+    
+    .numErr{
+        width: 120px;
+        height: 120px;
+        font-size: 30px;
+    }
+    
+    .huecoErr{
+        width: 120px;
+        height: 120px;
+        font-size: 30px;
     }
 
     
@@ -1204,6 +1433,42 @@ label {
     }
 
     .elementoListaObj-titulo a{
+        font-size: 8px;
+    }
+
+    .letraErr{
+        width: 100px;
+        height: 100px;   
+    }
+    
+    .numErr{
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+    }
+    
+    .huecoErr{
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    .letraErr{
+        width: 80px;
+        height: 80px;   
+    }
+    
+    .numErr{
+        width: 80px;
+        height: 80px;
+        font-size: 8px;
+    }
+    
+    .huecoErr{
+        width: 80px;
+        height: 80px;
         font-size: 8px;
     }
 }
@@ -1342,6 +1607,10 @@ label {
     .contenedorNavFooterMenu-elemento-noHover a{
         font-size: 8px;
     }
+
+    .datosUsuarioPerfil a{
+        font-size: 45px;
+    }
   }
 
   @media (max-width: 320px){
@@ -1398,5 +1667,13 @@ label {
         height: 300px;
     }
     
+    .postAnadirObj{
+        width: 250px;
+        height: 300px;
+    }
+
+    .postVacio{
+        width: 250px;
+    }
     
   }

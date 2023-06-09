@@ -10,4 +10,5 @@ Menu administrativo de los usuarios: 100 minutos
 Contacto: 95 minutos
 Añadir languaje toggle: 60 minutos
 CSS: 1405 minutos
+Perfil: 220 minutos
 Documentación: 399 minutos

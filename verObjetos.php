@@ -33,7 +33,6 @@ if(isset($_GET['buscar']) && !empty($_GET['buscar'])){
     <?php
         include "includes/head.php";
     ?>
-    <script src="js/scritptsObjetos.js" type="text/javascript"></script>
 </head>
 <body>
 <?php
@@ -56,31 +55,14 @@ include "includes/menu.php";
                     </div>
                 </form>      
             </div>
-            <div class="contenedorPostsObj">
+            <div class="contenedorPostsObj" id="contenedorDePostsGaleria">
                 <?php
                     echo $lista->imprimirFigurasParaGaleria();
                 ?>
+                <div class="postVacio"></div>
+                <div class="postVacio"></div>
             </div>
         </div>
-    </div>
-
-    <!-- <h1>Lista de objetos en mi colleción</h1>
-
-    <form name="buscador" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
-        <input name="buscar" type="text" placeholder="Buscador"><input type="submit" value="Buscar">
-        <button type="submit">↻</button>
-    </form> -->
-
-
-    <div class="lista" id="lista">
-
-        <!-- <?php
-
-           echo  $lista->imprimirFigurasEnBack();
-
-        ?> -->
-
-
     </div>
 </section>
 <?php
@@ -88,7 +70,5 @@ include "includes/menu.php";
 include "includes/footer.php";
 
 ?>
-
-
 </body>
 </html>
