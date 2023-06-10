@@ -475,7 +475,7 @@ class ObjetoKunst{
                         <div class='contenedorPopup'>
                             <div class='tituloPopup'>
                                 <div class='vacio'></div>
-                                <a class='descPopup' style='font-size: 18px;'><strong>CREAR POST</strong></a>
+                                <a class='descPopup' style='font-size: 18px;'><strong>EDITAR POST</strong></a>
                                 <a href='#cerrarPopup' class='cerrarPopup' id='cerrarPopup'><img src='./images/icons/icon-close.png' style='width: 15px;'></a>      
                             </div>
                             <form name='usuarios' action='".$_SERVER['PHP_SELF']."' method='post' enctype='multipart/form-data'>

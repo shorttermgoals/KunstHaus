@@ -11,4 +11,4 @@ Contacto: 95 minutos
 Añadir languaje toggle: 60 minutos
 CSS: 1485 minutos
 Perfil: 300 minutos
-Documentación: 399 minutos
+Documentación: 510 minutos

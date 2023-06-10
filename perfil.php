@@ -35,7 +35,7 @@ if(isset($_POST) && !empty($_POST)){
         $_POST['id_creador'] = $_SESSION['id_usuario'];
         $_POST['usuario_creador'] = $_SESSION['username'];
         $objeto->insertar($_POST, $_FILES['foto']);
-        header('location:verObjetos.php');
+        header('location:perfil.php');
     }
    // header('location:listarFiguras.php');
 
