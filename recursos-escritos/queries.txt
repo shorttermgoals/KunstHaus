@@ -21,14 +21,16 @@ COMMIT;
 
 CREATE TABLE `objetokunst` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `nombre` varchar(35) NOT NULL,
   `color` varchar(60) NOT NULL,
   `material` varchar(60) NOT NULL,
   `categoria` varchar(20) NOT NULL,
   `coleccion` varchar(50) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
   `fcreacion` date NOT NULL,
-  `foto` varchar(255) NOT NULL
+  `foto` varchar(255) NOT NULL,
+  `id_creador` int(11) NOT NULL,
+  `usuario_creador` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `objetokunst`
@@ -48,6 +50,9 @@ CREATE TABLE `usuarios` (
   `pass` varchar(100) NOT NULL,
   `permiso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `usuarios` (`id`, `nombre`, `username`, `mail`, `pass`, `permiso`) VALUES
+(41, '4', 'Admin', '4@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '7');
 
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);

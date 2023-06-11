@@ -150,7 +150,7 @@ if(isset($_POST) && !empty($_POST)){
                         <a href="#cerrarPopup" class="cerrarPopup" id="cerrarPopup"><img src="./images/icons/icon-close.png" style="width: 15px;"></a>      
                     </div>
                     <div class="textoForm-login">
-                        <div class="contenedorTextoForm">
+                        <div class="contenedorTextoFormPopup">
                             <li><a>Bienvenido
                                     Kunsthaus Labs, Inc. (“Kunsthaus,” “nosotros,” “nuestro”) proporciona su mercado y servicios (descritos a continuación) a usted (“usted” o “Usuario”) a través de su sitio web, plataforma y mercado ubicado en www.foundation.app (el “Plataforma”), sujeto a los siguientes Términos de servicio (según se enmienden de vez en cuando, los “Términos”). Al registrarse para obtener una cuenta en la Plataforma o utilizarla de otra manera, usted reconoce que ha leído y acepta estos Términos. La Política de privacidad y todos los términos adicionales, pautas y reglas establecidos en la Plataforma se incorporan por referencia en estos Términos y son expresamente aceptados y reconocidos por el Usuario.
                                     LEA ESTOS TÉRMINOS ATENTAMENTE, YA QUE CONTIENEN UN ACUERDO DE ARBITRAJE Y OTRA INFORMACIÓN IMPORTANTE SOBRE SUS DERECHOS LEGALES, RECURSOS Y OBLIGACIONES. EL ACUERDO DE ARBITRAJE REQUIERE (CON EXCEPCIONES LIMITADAS) QUE USTED PRESENTE RECLAMOS QUE TENGA CONTRA NOSOTROS A UN ARBITRAJE VINCULANTE Y FINAL, Y ADEMÁS (1) SOLO SE LE PERMITIRÁ PRESENTAR RECLAMOS CONTRA KUNSTHAUS DE FORMA INDIVIDUAL, NO COMO UN MIEMBRO DEL GRUPO EN UNA ACCIÓN O PROCEDIMIENTO COLECTIVO O REPRESENTATIVO, (2) SOLO SE LE PERMITIRÁ BUSCAR REPARACIÓN (INCLUYENDO REPARACIÓN MONETARIA, CAUTELAR Y DECLARATORIA) DE FORMA INDIVIDUAL, Y (3) ES POSIBLE QUE NO PUEDA RESOLVER CUALQUIER RECLAMO QUE TENGA CONTRA NOSOTROS EN UN TRIBUNAL DE JURADO O EN UN TRIBUNAL DE JUSTICIA.
@@ -185,7 +185,7 @@ if(isset($_POST) && !empty($_POST)){
                         <a href="#cerrarPopup" class="cerrarPopup" id="cerrarPopup"><img src="./images/icons/icon-close.png" style="width: 15px;"></a>      
                     </div>
                     <div class="textoForm-login">
-                        <div class="contenedorTextoForm">
+                        <div class="contenedorTextoFormPopup">
                             <li><a>Bienvenido
                                     Bienvenido al sitio web de KunstHaus. KunstHaus proporciona una plataforma para administrar y navegar obras de arte digitales (en conjunto, incluyendo el Sitio, el "Servicio").
                                     Esta Política de Privacidad explica qué información personal recopilamos, cómo utilizamos y compartimos esa información, y sus opciones con respecto a nuestras prácticas de información.

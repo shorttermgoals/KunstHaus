@@ -320,13 +320,13 @@ class Usuario{
                     $selector = "";
                     if($this->permiso > 0){
                         $selector = "<select name='permiso' required>
-                        <option value=''>Permiso</option>
+                        <option value='' hidden>Permiso</option>
                         <option value='0'>N/A</option>
                         <option value='7' selected>Admin</option>
                         </select>";
                     }else{
                         $selector = "<select name='permiso' required>
-                        <option value=''>Permiso</option>
+                        <option value='' hidden>Permiso</option>
                         <option value='0' selected>N/A</option>
                         <option value='7'>Admin</option>
                         </select>";

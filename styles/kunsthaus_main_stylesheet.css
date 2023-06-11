@@ -503,6 +503,12 @@ label {
     width: 250px;
     max-height: 300px;
     padding: 0px 5px;
+}
+
+.contenedorTextoFormPopup {
+    width: 250px;
+    max-height: 300px;
+    padding: 0px 5px;
     word-wrap: break-word;
     overflow-y: scroll;
 }
