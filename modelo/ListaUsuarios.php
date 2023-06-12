@@ -53,7 +53,7 @@ class ListaUsuarios{
                 <a><strong>Permiso</strong></a>
             </div>
         </div>";
-            for($i=0;$i<sizeof($this->lista);$i++){
+            for($i = sizeof($this->lista) - 1; $i >= 0; $i--){
 
                 $html .= $this->lista[$i]->imprimeteEnTr();
             }

@@ -106,12 +106,12 @@ include "includes/menu.php";
                 </a>
             </div>
             <div class="contenedorPostsObj" id="contenedorDePostsPerfil">
-                <?php 
-                    echo $lista->imprimirFigurasParaPerfil();
-                ?>
                 <a class="postAnadirObj" href="#popupAnadirPublicacion">
                         <img src="./images/icons/anadir-publicacion.png" style="width: 200px">
                 </a>
+                <?php 
+                    echo $lista->imprimirFigurasParaPerfil();
+                ?>
                 <div class="postVacio"></div>
                 <div class="postVacio"></div>
             </div>
